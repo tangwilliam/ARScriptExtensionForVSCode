@@ -1,0 +1,2728 @@
+//	NetEase AI - NetEase (Hangzhou) Network Co., Ltd.
+// 
+//  Insight3D API Reference  v1.4.1.0
+//
+//  Created by Xiangchen Kong (孔祥晨), TangWilliam(唐秦崴) on 2018/04/11.
+//
+//  Copyright © 2018年 @ NetEase (Hangzhou) Network Co., Ltd. All rights reserved.
+//
+//	Snippet Version: 1.4.1.0 (SP1) 2018年4月11日 11:10 A.M.
+
+{
+	// Place your snippets for lua here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	//  $1 ,   $2  for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+
+
+
+//-------------------------------------------------------------------
+// AR Script API
+
+	// Custom Working Flow Snippets：
+	"Print to console": {
+		"prefix": "log",
+		"body": [
+			"World.Log.Print(\" $1 \\n\");",
+			"$2"
+		],
+		"description": "Log output to console"
+	},
+	"If Snippet": {
+	    "prefix": "iif",
+	    "body": [
+	        "if $1 then ",
+	        "$2;",
+	        "end"
+	    ],
+	    "description": "If Snippet"
+	},
+	"If-Elseif Snippet": {
+	    "prefix": "iifif",
+	    "body": [
+	        "if $1 then ",
+	        "$2;",
+	        "elseif $3 then",
+	        "end"
+	    ],
+	    "description": "If-Elseif Snippet"
+	},
+	"If-Else Snippet": {
+	    "prefix": "iifelse",
+	    "body": [
+	        "if $1 then ",
+	        "$2;",
+	        "else",
+	        "$3",
+	        "end"
+	    ],
+	    "description": "If-Else Snippet"
+	},
+
+	
+	// Insight SDK APIs：
+
+	// ******** From physics_engine:
+	// Class HingeJoint
+	"HingeJoint": {
+		    "prefix": "HingeJoint",
+		    "body": [
+		        "HingeJoint"
+		    ],
+		    "description": "HingeJoint组件类\n\n继承自 FastAccessItem< T, O > ."
+		},
+	// Class HingeJoint's Member Functions:
+	"SetLimits": {
+		"prefix": "SetLimits()",
+		"body": [
+			"SetLimits( $1 , $2 , $3 , $4 , $5 )"
+		],
+		"description": "void SetLimits(bool enabled, float low, float high, float stiffness, float damping)\n\n为该HingeJoint设置角度限制\nLimit of angular rotation (in degrees) on the hinge joint. If enabled, the angle of the hinge will be restricted within the Min & Max values.\n参数:\n  enabled:是否启用Limits\n  low:最低角度限制\n  high:最高角度限制\n  stiffness:柔软度\n  damping:The higher this value, the more the object will slow down.\n"
+	},
+	"SetMassScale": {
+		"prefix": "SetMassScale()",
+		"body": [
+			"SetMassScale( $1 , $2 )"
+		],
+		"description": "void SetMassScale(float mass_anchor, float mass_hinged)\n\nThe scale to apply to the inverse mass and inertia tensor of the body prior to solving the constraints.\n参数:\n  mass_anchor:Set the inverse mass scale for actor0.\n  mass_hinged:Set the inverse mass scale for actor1.\n"
+	},
+	"SetMotor": {
+		"prefix": "SetMotor()",
+		"body": [
+			"SetMotor( $1 , $2 , $3 )"
+		],
+		"description": "void SetMotor(float target_angular_velocity, float max_force, float free_spin)\n\n为该HingeJoint设置力\nThe motor will apply a force up to a maximum force to achieve the target velocity in degrees per second.\n参数:\n  target_angular_velocity:目标角速度\n  max_force:最大力\n"
+	},
+	"SetTolerance": {
+		"prefix": "SetTolerance()",
+		"body": [
+			"SetTolerance( $1 , $2 , $3 )"
+		],
+		"description": "void SetTolerance(bool enabled, float linear, float angular)\n\n为该HingeJoint设置tolerance \nChanges error tolerance. Allows the spring to have a different rest length.\n参数:\n  enabled:是否启用Tolerance\n  linear:最低角度限制\n  angular:最高角度限制\n"
+	},
+	// ******** From UI:
+	// Class Button
+	"Button": {
+		"prefix": "Button",
+		"body": [
+			"Button"
+		],
+		"description": "Button组件类\n\n继承自 FastAccessItem< T, O > \n警告：\nButton上的OnClick事件需要用Lua脚本专门编写，具体写法可参考Sample代码\n"
+	},
+	// Class Button's Member Functions:
+	"GetColorMultiplier": {
+		"prefix": "GetColorMultiplier()",
+		"body": [
+			"GetColorMultiplier()"
+		],
+		"description": "float GetColorMultiplier()\n\n获得该Button组件的Color Multiplier的值\n返回:\n  Color Multiplier的值\n"
+	},
+	"GetDisabledColor": {
+		"prefix": "GetDisabledColor()",
+		"body": [
+			"GetDisabledColor()"
+		],
+		"description": "Vector4 GetDisabledColor()\n\n当状态机切换方式为ColorTint时，获得该Button组件的不可用状态的颜色值，不可用状态即Interactable=false\n返回:\n  不可用状态的颜色值\n"
+	},
+	"GetDisabledSprite": {
+		"prefix": "GetDisabledSprite()",
+		"body": [
+			"GetDisabledSprite()"
+		],
+		"description": "Sprite GetDisabledSprite()\n\n当状态机切换方式为SpriteSwap时，获得该Button组件的不可用状态的Sprite对象，不可用状态即Interactable=false\n返回:\n  不可用状态的Sprite对象\n"
+	},
+	"GetFadeDuration": {
+		"prefix": "GetFadeDuration()",
+		"body": [
+			"GetFadeDuration()"
+		],
+		"description": "float GetFadeDuration()\n\n获得该Button组件的Fade Duration的值\n返回:\n  Fade Duration的值\n"
+	},
+	"GetHighLightedColor": {
+		"prefix": "GetHighLightedColor()",
+		"body": [
+			"GetHighLightedColor()"
+		],
+		"description": "Vector4 GetHighLightedColor()\n\n当状态机切换方式为ColorTint时，获得该Button组件的按下状态的颜色值\n返回:\n  按下状态的颜色值\n"
+	},
+	"GetHighLightedSprite": {
+		"prefix": "GetHighLightedSprite()",
+		"body": [
+			"GetHighLightedSprite()"
+		],
+		"description": "Sprite GetHighLightedSprite()\n\n当状态机切换方式为SpriteSwap时，获得该Button组件的高亮状态的Sprite对象，不可用状态即Interactable=false\n返回:\n  高亮状态的Sprite对象\n"
+	},
+	"GetInteractable": {
+		"prefix": "GetInteractable()",
+		"body": [
+			"GetInteractable()"
+		],
+		"description": "bool GetInteractable()\n\n获得该Button组件的可交互状态\n返回:\n  true表示可交互，false表示不可交互\n"
+	},
+	"GetNormalColor": {
+		"prefix": "GetNormalColor()",
+		"body": [
+			"GetNormalColor()"
+		],
+		"description": "Vector4 GetNormalColor()\n\n当状态机切换方式为ColorTint时，获得该Button组件的正常状态的颜色值\n返回:\n  正常状态的颜色值\n"
+	},
+	"GetPressedColor": {
+		"prefix": "GetPressedColor()",
+		"body": [
+			"GetPressedColor()"
+		],
+		"description": "Vector4 GetPressedColor()\n\n当状态机切换方式为ColorTint时，获得该Button组件的按下状态的颜色值\n返回:\n  按下状态的颜色值\n"
+	},
+	"GetPressedSprite": {
+		"prefix": "GetPressedSprite()",
+		"body": [
+			"GetPressedSprite()"
+		],
+		"description": "Sprite GetPressedSprite()\n\n当状态机切换方式为SpriteSwap时，获得该Button组件的按下状态的Sprite对象，不可用状态即Interactable=false\n返回:\n  按下状态的Sprite对象\n"
+	},
+	"GetTransiton": {
+		"prefix": "GetTransiton()",
+		"body": [
+			"GetTransiton()"
+		],
+		"description": "Transition GetTransiton()\n\n获得该Button组件的状态机切换方式\n返回:\n  Button组件的状态机切换方式的枚举类型\n"
+	},
+	"RayCast - Button": {
+		"prefix": "RayCast()",
+		"body": [
+			"RayCast($1)"
+		],
+		"description": "bool RayCast(Vector2 screenPoint)\n\n判断该Button组件是否与屏幕上某点相交\n参数:\n  screenPoint 屏幕上某点\n返回:\n  true表示相交，false表示不相交\n"
+	},
+	"SetColorMultiplier": {
+		"prefix": "SetColorMultiplier()",
+		"body": [
+			"SetColorMultiplier($1)"
+		],
+		"description": "void SetColorMultiplier(float cm)\n\n设置该Button组件的Color Multiplier\n参数:\n  cm 想要设置的Color Multiplier的值\n"
+	},
+	"SetDisabledColor": {
+		"prefix": "SetDisabledColor()",
+		"body": [
+			"SetDisabledColor($1)"
+		],
+		"description": "void SetDisabledColor(Vector4 color)\n\n当状态机切换方式为ColorTint时，设置该Button组件的不可用状态的颜色值，不可用状态即Interactable=false\n参数:\n  color 不可用状态的颜色值\n"
+	},
+	"SetDisabledSprite": {
+		"prefix": "SetDisabledSprite()",
+		"body": [
+			"SetDisabledSprite($1)"
+		],
+		"description": "void SetDisabledSprite(Sprite sprite)\n\n当状态机切换方式为SpriteSwap时，设置该Button组件的不可用状态的Sprite对象，不可用状态即Interactable=false\n参数:\n  sprite 不可用状态的Sprite对象的指针\n"
+	},
+	"SetFadeDuration": {
+		"prefix": "SetFadeDuration()",
+		"body": [
+			"SetFadeDuration($1)"
+		],
+		"description": "void SetFadeDuration(float fd)\n\n设置该Button组件的Fade Duration的值\n参数:\n  fd 想要设置的Fade Duration的值\n警告:\n此版本暂不支持该功能，因此调用该方法无任何效果\n"
+	},
+	"SetHighLightedColor": {
+		"prefix": "SetHighLightedColor()",
+		"body": [
+			"SetHighLightedColor($1)"
+		],
+		"description": "void SetHighLightedColor(Vector4 color)\n\n当状态机切换方式为ColorTint时，设置该Button组件的高亮状态的颜色值\n参数:\n  color 高亮状态的颜色值\n"
+	},
+	"SetHighLightedSprite": {
+		"prefix": "SetHighLightedSprite()",
+		"body": [
+			"SetHighLightedSprite($1)"
+		],
+		"description": "void SetHighLightedSprite(Sprite sprite)\n\n当状态机切换方式为SpriteSwap时，设置该Button组件的高亮状态的Sprite对象，不可用状态即Interactable=false\n参数:\n  sprite 高亮状态的Sprite对象的指针\n"
+	},
+	"SetInteractable": {
+		"prefix": "SetInteractable()",
+		"body": [
+			"SetInteractable($1)"
+		],
+		"description": "void SetInteractable(bool flag)\n\n设置该Button组件是否可交互\n参数:\n  flag true表示可交互，false表示不可交互\n"
+	},
+	"SetNormalColor": {
+		"prefix": "SetNormalColor()",
+		"body": [
+			"SetNormalColor($1)"
+		],
+		"description": "void SetNormalColor(Vector4 color)\n\n当状态机切换方式为ColorTint时，设置该Button组件的正常状态的颜色值\n参数:\n  color 正常状态的颜色值\n"
+	},
+	"SetPressedColor": {
+		"prefix": "SetPressedColor()",
+		"body": [
+			"SetPressedColor($1)"
+		],
+		"description": "void SetPressedColor(Vector4 color)\n\n当状态机切换方式为ColorTint时，设置该Button组件的按下状态的颜色值\n参数:\n  color 按下状态的颜色值\n"
+	},
+	"SetPressedSprite": {
+		"prefix": "SetPressedSprite()",
+		"body": [
+			"SetPressedSprite($1)"
+		],
+		"description": "void SetPressedSprite(Sprite sprite)\n\n当状态机切换方式为SpriteSwap时，设置该Button组件的按下状态的Sprite对象，不可用状态即Interactable=false\n参数:\n  sprite 按下状态的Sprite对象\n"
+	},
+	"SetTransition": {
+		"prefix": "SetTransition()",
+		"body": [
+			"SetTransition($1)"
+		],
+		"description": "void SetTransition(Transition transition)\n\n设置该Button组件的状态机切换方式\n参数:\n  transition Button组件的状态机切换方式的枚举类型\n"
+	},
+	// Class Canvas
+	"Canvas": {
+		"prefix": "Canvas",
+		"body": [
+			"Canvas"
+		],
+		"description": "Canvas组件类\n\n继承自 FastAccessItem< T, O > \n警告：\n目前版本的Canvas组件只支持Screen Space-Overlay模式\n"
+	},
+	// Class Canvas's Member Functions:
+	"GetReferencePixelsPerUnit": {
+		"prefix": "GetReferencePixelsPerUnit()",
+		"body": [
+			"GetReferencePixelsPerUnit()"
+		],
+		"description": "float GetReferencePixelsPerUnit()\n\n获得该Canvas的Reference Pixels Per Unit属性值\n返回:\n  Reference Pixels Per Unit属性值\n"
+	},
+	"GetRenderMode": {
+		"prefix": "GetRenderMode()",
+		"body": [
+			"GetRenderMode()"
+		],
+		"description": "RenderMode GetRenderMode()\n\n获得该Canvas的Render Mode属性值\n返回:\n  Render Mode属性值\n警告：\n目前版本的Canvas组件只支持Screen Space-Overlay模式\n"
+	},
+	"GetScaleFactor": {
+		"prefix": "GetScaleFactor()",
+		"body": [
+			"GetScaleFactor()"
+		],
+		"description": "float GetScaleFactor()\n\n获得该Canvas的Scale Factor属性值\n返回:\n  Scale Factor属性值\n"
+	},
+	"SetRenderMode": {
+		"prefix": "SetRenderMode()",
+		"body": [
+			"SetTransitSetRenderModeion($1)"
+		],
+		"description": "void SetRenderMode(RenderMode renderMode)\n\n设置该Canvas的Render Mode属性值\n参数:\n  renderMode Render Mode属性值\n警告：\n目前版本的Canvas组件只支持Screen Space-Overlay模式\n"
+	},
+
+
+	// Class CanvasRenderer
+	"CanvasRenderer": {
+		"prefix": "CanvasRenderer",
+		"body": [
+			"CanvasRenderer"
+		],
+		"description": "CanvasRenderer组件\n\n继承自 FastAccessItem< T, O > \n警告：\n目前版本的Canvas组件只支持Screen Space-Overlay模式\n"
+	},
+	// Class CanvasRenderer's Member Functions:
+	"FindProperty - CanvasRenderer": {
+		    "prefix": "FindProperty()",
+		    "body": [
+		        "FindProperty($1)"
+		    ],
+		    "description": "Property FindProperty(char name)\n\n根据属性名称查找该CanvasRenderer组件上对应材质中的某个属性，CanvasRenderer组件上有且只有一个材质\n参数:\n  name 想要查找的属性名称\n返回:\n  该CanvasRenderer组件上的相应的Property对象，若找不到则返回空\n"
+		},
+	"GetGraphic": {
+		"prefix": "GetGraphic()",
+		"body": [
+			"GetGraphic()"
+		],
+		"description": "Graphic GetGraphic()\n\n获得该CanvasRenderer组件上的图形对象（Image对象，RawImage对象或Text对象）\n返回:\n  该CanvasRenderer组件上的图形对象，若找不到则返回空\n"
+	},
+	"GetImage - CanvasRenderer": {
+		"prefix": "GetImage()",
+		"body": [
+			"GetImage()"
+		],
+		"description": "Image GetImage()\n\n获得该CanvasRenderer组件上的Image对象 \n返回:\n  该CanvasRenderer组件上的Image对象，若找不到则返回空\n"
+	},
+	"GetRawImage - CanvasRenderer": {
+		"prefix": "GetRawImage()",
+		"body": [
+			"GetRawImage()"
+		],
+		"description": "RawImage GetRawImage()\n\n获得该CanvasRenderer组件上的RawImage对象 \n返回:\n  该CanvasRenderer组件上的RawImage对象，若找不到则返回空\n"
+	},
+	"GetText - CanvasRenderer": {
+		"prefix": "GetText()",
+		"body": [
+			"GetText()"
+		],
+		"description": "Text GetText()\n\n获得该CanvasRenderer组件上的Text对象 \n返回:\n  该CanvasRenderer组件上的Text对象，若找不到则返回空\n"
+	},
+
+	// Class Graphic
+	"Graphic": {
+		"prefix": "Graphic",
+		"body": [
+			"Graphic"
+		],
+		"description": "Graphic组件类\n\nGraphic组件类，是Image、RawImage、Text等图形组件的父类 \n"
+	},
+	// Class Graphic's Member Functions:
+	"Clear": {
+		"prefix": "Clear()",
+		"body": [
+			"Clear()"
+		],
+		"description": "void Clear()\n\n清空该Graphic组件上的材质和Mesh网格\n"
+	},
+	"GetColor": {
+		"prefix": "GetColor()",
+		"body": [
+			"GetColor()"
+		],
+		"description": "Vector4 GetColor()\n\n获得该Graphic组件的颜色，该颜色独立于材质的颜色，图形组件的最终渲染颜色由该颜色与材质颜色共同决定 \n返回:\n  颜色值，rgba分量分别存储在Vector4的四个分量中\n"
+	},
+	"GetMaterial - Graphic": {
+		"prefix": "GetMaterial()",
+		"body": [
+			"GetMaterial()"
+		],
+		"description": "Material GetMaterial()\n\n获得该Graphic组件的材质对象，Graphic组件有且只有一个材质 \n返回:\n  该Graphic组件的材质对象\n"
+	},
+	"SetColor - Graphic": {
+		"prefix": "SetColor()",
+		"body": [
+			"SetColor($1)"
+		],
+		"description": "void SetColor(Vector4 color)\n\n设置该Graphic组件的颜色，该颜色独立于材质的颜色，图形组件的最终渲染颜色由该颜色与材质颜色共同决定\n参数:\n  color 想要设置的颜色值，rgba分量分别存储在Vector4的四个分量中\n"
+	},
+	"SetMaterial - Graphic": {
+		"prefix": "SetMaterial()",
+		"body": [
+			"SetMaterial($1)"
+		],
+		"description": "void SetMaterial(Material material)\n\n设置该Graphic组件的材质对象，Graphic组件有且只有一个材质\n参数:\n  material 想要设置的材质对象\n"
+	},
+
+	// Class Image
+	"Image": {
+		"prefix": "Image",
+		"body": [
+			"Image"
+		],
+		"description": "Image组件类\n\n"
+	},
+	// Class Image's Member Functions:
+	"GetSprite": {
+		"prefix": "GetSprite()",
+		"body": [
+			"GetSprite()"
+		],
+		"description": "Sprite GetSprite()\n\n获得该RawImage组件的Sprite对象 \n返回:\n  该RawImage组件的Sprite对象\n"
+	},
+
+	"HasBorder": {
+		"prefix": "HasBorder()",
+		"body": [
+			"HasBorder()"
+		],
+		"description": "bool HasBorder()\n\n判断该Image组件上的默认Sprite是否有Border\n"
+	},
+
+	"SetSprite": {
+		"prefix": "SetSprite()",
+		"body": [
+			"SetSprite($1)"
+		],
+		"description": "void SetSprite(Sprite sprite)\n\n设置该Image组件的Sprite对象\n参数:\n  Sprite 想要设置的Sprite对象\n"
+	},
+
+	// Class RawImage
+	"RawImage": {
+		"prefix": "RawImage",
+		"body": [
+			"RawImage"
+		],
+		"description": "RawImage组件类\n\n"
+	},
+	// Class RawImage's Member Functions:
+	"GetTexture - RawImage": {
+		"prefix": "GetTexture()",
+		"body": [
+			"GetTexture()"
+		],
+		"description": "Texture GetTexture()\n\n获得该RawImage组件的纹理对象 \n返回:\n  该RawImage组件的纹理对象\n"
+	},
+	"SetTexture - RawImage": {
+		"prefix": "SetTexture()",
+		"body": [
+			"SetTexture($1)"
+		],
+		"description": "void SetTexture(Texture texture)\n\n设置该RawImage组件的纹理对象\n参数:\n  texture 想要设置的纹理对象\n"
+	},
+
+	// Class Sprite
+	"Sprite": {
+		"prefix": "Sprite",
+		"body": [
+			"Sprite"
+		],
+		"description": "Sprite组件类\n\n"
+	},
+	// Class Sprite's Member Functions:
+	"GetBorder": {
+		"prefix": "GetBorder()",
+		"body": [
+			"GetBorder()"
+		],
+		"description": "Vector4 GetBorder()\n\n获得该Sprite组件的边界信息 \n Returns the border sizes of the sprite. \n返回:\n  边界信息\n"
+	},
+
+	"GetInnerUVRect": {
+		"prefix": "GetInnerUVRect()",
+		"body": [
+			"GetInnerUVRect()"
+		],
+		"description": "Vector4 GetInnerUVRect()\n\n获得该Sprite组件的Inner UV信息 \n Inner UV's of the Sprite. \n返回:\n  Inner UV信息\n"
+	},
+
+	"GetOuterUVRect": {
+		"prefix": "GetOuterUVRect()",
+		"body": [
+			"GetOuterUVRect()"
+		],
+		"description": "Vector4 GetOuterUVRect()\n\n获得该Sprite组件的Outer UV信息 \n Outer UV's of the Sprite. \n返回:\n  Outer UV信息\n"
+	},
+	"GetPadding": {
+		"prefix": "GetPadding()",
+		"body": [
+			"GetPadding()"
+		],
+		"description": "Vector4 GetPadding()\n\n获得该Sprite组件的Padding信息 \n Return the padding on the sprite. \n返回:\n  Padding信息\n"
+	},
+	"GetPixelsPerUnit": {
+		"prefix": "GetPixelsPerUnit()",
+		"body": [
+			"GetPixelsPerUnit()"
+		],
+		"description": "float GetPixelsPerUnit()\n\n获得该Sprite组件的PixelsPerUnit信息 \n The number of pixels in the sprite that correspond to one unit in world space. \n返回:\n  PixelsPerUnit信息\n"
+	},
+	"GetRect - Sprite": {
+		"prefix": "GetRect()",
+		"body": [
+			"GetRect()"
+		],
+		"description": "Vector4 GetRect()\n\n获得该Sprite组件的矩形框信息 \n Location of the Sprite on the original Texture, specified in pixels. \n返回:\n  该Sprite组件的矩形框信息，矩形框的左下角x,y与矩形框的宽高w,h分别存放在Vector4的四个分量中\n"
+	},
+	"GetTexture - Sprite": {
+		"prefix": "GetTexture()",
+		"body": [
+			"GetTexture()"
+		],
+		"description": "Texture GetTexture()\n\n获得该Sprite组件的纹理对象 \n 返回:\n  该Sprite组件的纹理对象\n"
+	},
+	"SetBorder": {
+		"prefix": "SetBorder()",
+		"body": [
+			"SetBorder($1)"
+		],
+		"description": "void SetBorder(Vector4 src)\n\n设置该Sprite组件的边界信息 \nSet the border sizes of the sprite.\n参数:\n  src 边界信息\n"
+	},
+	"SetInnerUVRect": {
+		"prefix": "SetInnerUVRect()",
+		"body": [
+			"SetInnerUVRect($1)"
+		],
+		"description": "void SetInnerUVRect(Vector4 src)\n\n设置该Sprite组件的Inner UV信息  \nSet Inner UV's of the Sprite.\n参数:\n  src Inner UV信息\n"
+	},
+	"SetOuterUVRect": {
+		"prefix": "SetOuterUVRect()",
+		"body": [
+			"SetOuterUVRect($1)"
+		],
+		"description": "void SetOuterUVRect(Vector4 src)\n\n设置该Sprite组件的Outer UV信息  \nSet Outer UV's of the Sprite.\n参数:\n  src Outer UV信息\n"
+	},
+	"SetPadding": {
+		"prefix": "SetPadding()",
+		"body": [
+			"SetPadding($1)"
+		],
+		"description": "void SetPadding(Vector4 src)\n\n设置该Sprite组件的Padding信息  \nSet the padding on the sprite.\n参数:\n  src Padding信息\n"
+	},
+	"SetPixelsPerUnit": {
+		"prefix": "SetPixelsPerUnit()",
+		"body": [
+			"SetPixelsPerUnit($1)"
+		],
+		"description": "void SetPixelsPerUnit(float src)\n\n设置该Sprite组件的PixelsPerUnit信息  \nSet the number of pixels in the sprite that correspond to one unit in world space.\n参数:\n  src PixelsPerUnit信息\n"
+	},
+	"SetRect - Sprite": {
+		"prefix": "SetRect()",
+		"body": [
+			"SetRect($1)"
+		],
+		"description": "void SetRect(Vector4 src)\n\n设置该Sprite组件的矩形框信息  \nSet the Location of the Sprite on the original Texture, specified in pixels.\n参数:\n  src 该Sprite组件的矩形框信息，矩形框的左下角x,y与矩形框的宽高w,h分别存放在Vector4的四个分量中\n"
+	},
+	"SetTexture - Sprite": {
+		"prefix": "SetTexture()",
+		"body": [
+			"SetTexture($1)"
+		],
+		"description": "void SetTexture(Texture texture)\n\n设置该Sprite组件的纹理对象  \n参数:\n  texture 想要设置的Texture对象\n"
+	},
+
+	// Class Text
+	"Text": {
+		"prefix": "Text",
+		"body": [
+			"Text"
+		],
+		"description": "Text组件类\n\n"
+	},
+	// Class Text's Member Functions:
+	"GetDefaultFontName": {
+		"prefix": "GetDefaultFontName()",
+		"body": [
+			"GetDefaultFontName()"
+		],
+		"description": "char GetDefaultFontName()\n\n静态方法，获得当前系统默认的字体名称 \n 返回:\n  当前系统默认的字体名称\n"
+	},
+	"GetFontName": {
+		"prefix": "GetFontName()",
+		"body": [
+			"GetFontName()"
+		],
+		"description": "char GetFontName()\n\n获得该Text的字体名称 \n 返回:\n  Text的字体名称\n"
+	},
+	"GetText": {
+		"prefix": "GetText()",
+		"body": [
+			"GetText()"
+		],
+		"description": "char GetText()\n\n获得该Text组件的文字字符串 \n 返回:\n  该Text组件的文字字符串\n"
+	},
+	"SetFontName": {
+		"prefix": "SetFontName()",
+		"body": [
+			"SetFontName($1)"
+		],
+		"description": "void SetFontName(char fontName)\n\n设置该Text的字体名称，字体仅对该Text生效，不影响其他Text组件。  \n参数:\n  想要设置的Text的字体名称\n"
+	},
+	"SetText - Text": {
+		"prefix": "SetText()",
+		"body": [
+			"SetText($1)"
+		],
+		"description": "void SetText(char content)\n\n设置该Text组件的文字字符串 \n参数:\n  content 想要设置的文字字符串\n"
+	},
+	// ******** From wrap_world:
+	// Class Animator
+	"Animator": {
+		    "prefix": "Animator",
+		    "body": [
+		        "Animator"
+		    ],
+		    "description": "Animator类, 动画组件，用于控制动画系统。\n\n继承自 FastAccessItem< T, O > ."
+		},
+	// Class Animator's Member Functions:
+	"GetNormalizedTime": {
+		    "prefix": "GetNormalizedTime()",
+		    "body": [
+		        "GetNormalizedTime($1)"
+		    ],
+		    "description": "float GetNormalizedTime(char clip_name)\n\n获取当前播放位置归一化偏移量，范围在[0,1]之间\n参数:\n  clip_name （可选）想要获得的动画片段的名称，默认为空，表示当前正在播放的动画片段\n返回:\n  当前播放位置归一化偏移量，范围在[0,1]之间\n"
+		},
+	"IsPlaying - Animator": {
+		    "prefix": "IsPlaying()",
+		    "body": [
+		        "IsPlaying($1)"
+		    ],
+		    "description": "bool IsPlaying(char clip_name)\n\n判断某个动画片段是否正在播放\n参数:\n  clip_name （可选）想要获得的动画片段的名称，默认为空，表示当前正在播放的动画片段\n返回:\n  true表示正在播放，false表示未播放\n"
+		},
+	"Pause - Animator": {
+		    "prefix": "Pause()",
+		    "body": [
+		        "Pause()"
+		    ],
+		    "description": "void Pause()\n\n暂停播放\n"
+		},
+	"Play": {
+		    "prefix": "Play()",
+		    "body": [
+		        "Play( $1 , $2 , $3 , $4 )"
+		    ],
+		    "description": "bool Play(char clip_name, float normalized_offset, float speed, bool loop)\n\n播放动画\n参数:\n  clip_name:想要播放的动画片段的名称\n  normalized_offset:（可选）动画播放位置归一化偏移量，范围在[0,1]之间，默认为0\n  speed:播放速度，默认为1\n  loop:（可选）是否循环播放，默认为false\n"
+		},
+	// Class Camera
+	"Camera": {
+		    "prefix": "Camera",
+		    "body": [
+		        "Camera"
+		    ],
+		    "description": "Camera组件类\n\n继承自 FastAccessItem< T, O > ."
+		},
+	// Class Camera's Member Functions:
+	"EstimationSphericalHarmonicIntensity": {
+		"prefix": "EstimationSphericalHarmonicIntensity()",
+		"body": [
+			"EstimationSphericalHarmonicIntensity()"
+		],
+		"description": "float EstimationSphericalHarmonicIntensity()\n\n（AR独有）获得真实相机（手机摄像头）中球谐光照强度的估算值 \n返回:\n  真实相机（手机摄像头）中球谐光照强度的估算值\n"
+	},
+	"GetMask - Camera": {
+		"prefix": "GetMask()",
+		"body": [
+			"GetMask()"
+		],
+		"description": "long GetMask()\n\n获得该Camera组件的Mask \n返回:\n  该Camera组件的Mask，只有处于激活层的Entity才会被该Camera所渲染\n"
+	},
+	"GetOrder": {
+		"prefix": "GetOrder()",
+		"body": [
+			"GetOrder()"
+		],
+		"description": "float GetOrder()\n\n获得该Camera组件的优先级信息 \n返回:\n  该Camera组件的优先级信息，渲染时所有的Camera按照Order值从小到大排序，Order小的Camera将被优先渲染\n"
+	},
+	"GetProjection": {
+		"prefix": "GetProjection()",
+		"body": [
+			"GetProjection()"
+		],
+		"description": "Projection GetProjection()\n\n获得该Camera组件的投影结构体信息 \n返回:\n  该Camera组件的投影结构体信息，用一个Projection表示\n"
+	},
+	"GetProjectionMatrix": {
+		"prefix": "GetProjectionMatrix()",
+		"body": [
+			"GetProjectionMatrix()"
+		],
+		"description": "Matrix4x4 GetProjectionMatrix()\n\n获得该Camera组件的投影矩阵 \n返回:\n  该Camera组件的投影矩阵，用一个Matrix4x4表示\n"
+	},
+	"GetViewport": {
+		"prefix": "GetViewport()",
+		"body": [
+			"GetViewport()"
+		],
+		"description": "RectInt GetViewport()\n\n获得该Camera组件的视口坐标 \n返回:\n  该Camera组件的视口坐标，用一个RectInt表示\n"
+	},
+	"GetViewrect": {
+		"prefix": "GetViewrect()",
+		"body": [
+			"GetViewrect()"
+		],
+		"description": "Vector4 GetViewrect()\n\n获得该Camera组件的视口坐标 \n返回:\n  该Camera组件的视口坐标，用一个Vector4表示\n"
+	},
+	"IsFree": {
+		"prefix": "IsFree()",
+		"body": [
+			"IsFree()"
+		],
+		"description": "bool IsFree()\n\n（AR独有）该相机是否被AR算法控制。通常地，场景中的主相机MainCamera会被AR算法移动，脚本代码中移动MainCamera是无效的。渲染到纹理的相机位移通常不受AR算法控制。 \n返回:\n  true表示相机是自由的，不被AR算法所控制；false表示相机受AR算法控制。\n"
+	},
+	"Main - Camera": {
+		"prefix": "Main()",
+		"body": [
+			"Main()"
+		],
+		"description": "Entity Main()\n\n静态方法，获得整个场景中的主相机 \n返回:\n  主相机所在的Entity\n"
+	},
+	"ScreenPointToRay - Camera": {
+		"prefix": "ScreenPointToRay()",
+		"body": [
+			"ScreenPointToRay()"
+		],
+		"description": "Vector3 ScreenPointToRay()\n\n将某个二维屏幕坐标变换成一条三维射线 \n返回:\n  射线向量，用一个Vector3表示\n"
+	},
+	"SetSphericalHarmonicIntensity": {
+		"prefix": "SetSphericalHarmonicIntensity()",
+		"body": [
+			"SetSphericalHarmonicIntensity($1)"
+		],
+		"description": "void SetSphericalHarmonicIntensity(float intensity)\n\n（AR独有）设置该虚拟相机中的球谐光照强度，可以搭配光照恢复算法使用\n参数:\n  intensity: 指定的强度值\n"
+	},
+	"SphericalHarmonicIntensity": {
+		"prefix": "SphericalHarmonicIntensity()",
+		"body": [
+			"SphericalHarmonicIntensity()"
+		],
+		"description": "float SphericalHarmonicIntensity()\n\n（AR独有）获得虚拟相机中的球谐光照强度 \n返回:\n  虚拟相机中球谐光照强度的估算值\n"
+	},
+
+
+	// Class Entity
+	"Entity": {
+		    "prefix": "Entity",
+		    "body": [
+		        "Entity"
+		    ],
+		    "description": "Entity类, 实体管理的单位，每个Entity都有自己的Transform，以及Parent和Children。\n\n继承自 Bindable , 以及 RigidbodyOwner .被 GUIElement 继承."
+		},
+	// Class Entity's Member Functions:
+	"Destroy": {
+		    "prefix": "Destroy()",
+		    "body": [
+		        "Destroy($1)"
+		    ],
+		    "description": "void Destroy(Entity entity)\n\n静态方法，销毁一个Entity。\n参数:\n  entity 某个Entity\n"
+		},
+
+	"FindChild": {
+		    "prefix": "FindChild()",
+		    "body": [
+		        "FindChild($1)"
+		    ],
+		    "description": "Entity FindChild(char path)\n\n根据路径查找该Entity的某个特定的子节点\n返回:\n  子节点Entity\n"
+		},
+
+	"FindEntity": {
+		    "prefix": "FindEntity()",
+		    "body": [
+		        "FindEntity($1)"
+		    ],
+		    "description": "Entity FindEntity(char path)\n\n静态方法，根据路径查找某个特定的Entity\n返回:\n  Entity\n"
+		},
+
+	"FindScriptRunner": {
+		    "prefix": "FindScriptRunner()",
+		    "body": [
+		        "FindScriptRunner($1)"
+		    ],
+		    "description": "ScriptRunner FindScriptRunner(char path)\n\n获得该Entity的某个特定的脚本\n参数:\n  path 该脚本在磁盘上的文件路径\n返回:\n  ScriptRunner，如果没有找到，则返回空\n"
+		},
+
+	"GetAnimator": {
+		    "prefix": "GetAnimator()",
+		    "body": [
+		        "GetAnimator()"
+		    ],
+		    "description": "Animator GetAnimator()\n\n获得该Entity的Animator组件\n返回:\n  Animator组件，如果该Entity不包含Animator，则返回空\n"
+		},
+
+	"GetButton": {
+		    "prefix": "GetButton()",
+		    "body": [
+		        "GetButton()"
+		    ],
+		    "description": "Button GetButton()\n\n获得该Entity的Button组件\n返回:\n  Button组件，如果该Entity不包含Button，则返回空\n"
+		},
+
+	"GetCamera": {
+		    "prefix": "GetCamera()",
+		    "body": [
+		        "GetCamera()"
+		    ],
+		    "description": "Camera GetCamera()\n\n获得该Entity的Camera组件\n返回:\n  Camera组件，如果该Entity不包含Camera，则返回空\n"
+		},
+
+	"GetCanvas": {
+		    "prefix": "GetCanvas()",
+		    "body": [
+		        "GetCanvas()"
+		    ],
+		    "description": "Canvas GetCanvas()\n\n获得该Entity的Canvas组件\n返回:\n  Canvas组件，如果该Entity不包含Canvas，则返回空\n"
+		},
+
+	"GetCanvasRenderer": {
+		    "prefix": "GetCanvasRenderer()",
+		    "body": [
+		        "GetCanvasRenderer()"
+		    ],
+		    "description": "CanvasRenderer GetCanvasRenderer()\n\n获得该Entity的CanvasRenderer组件\n返回:\n  CanvasRenderer组件，如果该Entity不包含CanvasRenderer，则返回空\n"
+		},
+
+	"GetChild": {
+		    "prefix": "GetChild()",
+		    "body": [
+		        "GetChild($1)"
+		    ],
+		    "description": "Entity GetChild(int index)\n\n根据索引值获得该Entity的某个子节点\n参数:\n  index 索引值\n返回:\n  子节点Entity"
+		},
+	
+	"GetChildren": {
+		"prefix": "GetChildren()",
+		"body": [
+			"GetChildren()"
+		],
+		"description": "EntityDeque GetChildren()\n\n获得该Entity的子节点\n返回:\n  一个双向队列deque，包含所有子节点Entity"
+	},
+	"GetChildrenCount": {
+		"prefix": "GetChildrenCount()",
+		"body": [
+			"GetChildrenCount()"
+		],
+		"description": "int GetChildrenCount()\n\n获得该Entity的子节点的个数\n返回:\n  子节点的个数"
+	},
+	"GetHingeJoint": {
+		"prefix": "GetHingeJoint()",
+		"body": [
+			"GetHingeJoint()"
+		],
+		"description": "HingeJoint GetHingeJoint()\n\n获得该Entity的HingeJoint组件\n返回:\n  HingeJoint组件，如果该Entity不包含HingeJoint，则返回空"
+	},
+	"GetImage - Entity": {
+		"prefix": "GetImage()",
+		"body": [
+			"GetImage()"
+		],
+		"description": "Image GetImage()\n\n获得该Entity的Image组件\n返回:\n  Image组件，如果该Entity不包含Image，则返回空"
+	},
+	"GetLight": {
+		"prefix": "GetLight()",
+		"body": [
+			"GetLight()"
+		],
+		"description": "Light GetLight()\n\n获得该Entity的Light组件\n返回:\n  Light组件，如果该Entity不包含Light，则返回空"
+	},
+	"GetLocalRotation - Entity": {
+		"prefix": "GetLocalRotation()",
+		"body": [
+			"GetLocalRotation()"
+		],
+		"description": "Quaternion GetLocalRotation()\n\n获得该Entity的局部旋转属性\n返回:\n  局部旋转属性，用一个Quaternion表示"
+	},
+	"GetLocalScale - Entity": {
+		"prefix": "GetLocalScale()",
+		"body": [
+			"GetLocalScale()"
+		],
+		"description": "Vector3 GetLocalScale()\n\n获得该Entity的局部缩放属性\n返回:\n  局部缩放属性，用一个Vector3表示"
+	},
+	"GetLocalToWorldMatrix": {
+		"prefix": "GetLocalToWorldMatrix()",
+		"body": [
+			"GetLocalToWorldMatrix()"
+		],
+		"description": "Matrix4x4 GetLocalToWorldMatrix()\n\n获得该Entity从局部坐标到世界坐标的变换矩阵\n返回:\n  从局部坐标到世界坐标的变换矩阵"
+	},
+	"GetLocalTransform": {
+		"prefix": "GetLocalTransform()",
+		"body": [
+			"GetLocalTransform()"
+		],
+		"description": "Transform GetLocalTransform()\n\n获得该Entity的局部平移，旋转，缩放属性\n返回:\n  局部平移，旋转，缩放属性，用一个Transform表示"
+	},
+	"GetLocalTranslation - Entity": {
+		"prefix": "GetLocalTranslation()",
+		"body": [
+			"GetLocalTranslation()"
+		],
+		"description": "Vector3 GetLocalTranslation()\n\n获得该Entity的局部平移属性\n返回:\n  局部平移属性，用一个Vector3表示"
+	},
+	"GetMask - Entity": {
+		"prefix": "GetMask()",
+		"body": [
+			"GetMask()"
+		],
+		"description": "long GetMask()\n\n获得该Entity自身的Mask值。\n返回:\n  Entity自身的long型Mask值"
+	},
+	"GetMaskDerived": {
+		"prefix": "GetMaskDerived()",
+		"body": [
+			"GetMaskDerived()"
+		],
+		"description": "long GetMaskDerived()\n\n获得该Entity在树形结构中的Mask值。\n返回:\n  获得该Entity在树形结构中的long型Mask值。"
+	},
+	"GetName - Entity": {
+		"prefix": "GetName()",
+		"body": [
+			"GetName()"
+		],
+		"description": "char GetName()\n\n获得Entity的名字。\n返回:\n  获得Entity的char型名字。"
+	},
+	"GetParent": {
+		"prefix": "GetParent()",
+		"body": [
+			"GetParent()"
+		],
+		"description": "Entity GetParent()\n\n获得该Entity的父节点\n返回:\n  父节点Entity"
+	},
+	"GetRawImage - Entity": {
+		"prefix": "GetRawImage()",
+		"body": [
+			"GetRawImage()"
+		],
+		"description": "RawImage GetRawImage()\n\n获得该Entity的RawImage组件\n返回:\n  RawImage组件，如果该Entity不包含RawImage，则返回空"
+	},
+	"GetRectTransform": {
+		"prefix": "GetRectTransform()",
+		"body": [
+			"GetRectTransform()"
+		],
+		"description": "RectTransform GetRectTransform()\n\n若Entity是一个UI元素，则获得该Entity的RectTransform组件\n返回:\n  RectTransform组件，如果该Entity不是一个UI元素，则返回空"
+	},
+	"GetRenderer": {
+		"prefix": "GetRenderer()",
+		"body": [
+			"GetRenderer()"
+		],
+		"description": "Render GetRenderer()\n\n获得该Entity的Render组件\n返回:\n  Render组件，如果该Entity不包含Render，则返回空"
+	},
+	"GetRigidbody": {
+		"prefix": "GetRigidbody()",
+		"body": [
+			"GetRigidbody()"
+		],
+		"description": "Rigidbody GetRigidbody()\n\n获得该Entity的Rigidbody组件\n返回:\n  Rigidbody组件，如果该Entity不包含Rigidbody，则返回空"
+	},
+	"GetRoot": {
+		"prefix": "GetRoot()",
+		"body": [
+			"GetRoot()"
+		],
+		"description": "Entity GetRoot()\n\n静态方法，获得整个场景的Root节点\n返回:\n  Root节点的Entity"
+	},
+	"GetRootCanvas": {
+		"prefix": "GetRootCanvas()",
+		"body": [
+			"GetRootCanvas()"
+		],
+		"description": "Canvas GetRootCanvas()\n\n若Entity是一个UI元素，则获得该Entity的树形结构最顶层的Canvas\n返回:\n  最顶层的Canvas，如果该Entity不是一个UI元素，则返回空"
+	},
+	"GetText - Entity": {
+		"prefix": "GetText()",
+		"body": [
+			"GetText()"
+		],
+		"description": "Text GetText()\n\n获得该Entity的Text组件\n返回:\n  Text组件，如果该Entity不包含Text，则返回空"
+	},
+	"GetViewMatrix": {
+		"prefix": "GetViewMatrix()",
+		"body": [
+			"GetViewMatrix()"
+		],
+		"description": "Matrix4x4 GetViewMatrix()\n\n获得该Entity的世界坐标到视口的变换矩阵\n返回:\n  视口变换矩阵，用一个Matrix4x4表示"
+	},
+	"GetWorldForward": {
+		"prefix": "GetWorldForward()",
+		"body": [
+			"GetWorldForward()"
+		],
+		"description": "Vector3 GetWorldForward()\n\n获得该Entity的前向单位向量，即世界坐标系下的Z轴方向\n返回:\n  前向单位向量，用一个Vector3表示"
+	},
+	"GetWorldRight": {
+		"prefix": "GetWorldRight()",
+		"body": [
+			"GetWorldRight()"
+		],
+		"description": "Vector3 GetWorldRight()\n\n获得该Entity的右向单位向量，即世界坐标系下的X轴方向\n返回:\n  右向单位向量，用一个Vector3表示"
+	},
+	"GetWorldToLocalMatrix": {
+		"prefix": "GetWorldToLocalMatrix()",
+		"body": [
+			"GetWorldToLocalMatrix()"
+		],
+		"description": "Matrix4x4 GetWorldToLocalMatrix()\n\n获得该Entity从世界坐标到局部坐标的变换矩阵\n返回:\n  从世界坐标到局部坐标的变换矩阵"
+	},
+	"GetWorldUp": {
+		"prefix": "GetWorldUp()",
+		"body": [
+			"GetWorldUp()"
+		],
+		"description": "Vector3 GetWorldUp()\n\n获得该Entity的向上单位向量，即世界坐标系下的Y轴方向\n返回:\n  向上单位向量，用一个Vector3表示"
+	},
+	"IsDestroyed": {
+		"prefix": "IsDestroyed()",
+		"body": [
+			"IsDestroyed()"
+		],
+		"description": "bool IsDestroyed()\n\n判断一个Entity是否已被销毁\n返回:\n  true表示已销毁，false表示未销毁。"
+	},
+	"IsEnabled": {
+		"prefix": "IsEnabled()",
+		"body": [
+			"IsEnabled()"
+		],
+		"description": "bool IsEnabled()\n\n判断该Entity是否可见。\n返回:\n  布尔值，true表示可见，false表示不可见"
+	},
+	"IsEnabledInHierarchy": {
+		"prefix": "IsEnabledInHierarchy()",
+		"body": [
+			"IsEnabledInHierarchy()"
+		],
+		"description": "bool IsEnabledInHierarchy()\n\n判断该Entity在树形结构中是否可见。\n返回:\n  布尔值，true表示可见，false表示不可见"
+	},
+	"IsVisible": {
+		"prefix": "IsVisible()",
+		"body": [
+			"IsVisible()"
+		],
+		"description": "bool IsVisible()\n\n判断该Entity是否可见。\n返回:\n  布尔值，true表示可见，false表示不可见\n注释：Deprecated. This method is deprecated and will be removed in SDK 1.5.\n"
+	},
+	"IsVisibleDerived 1/2": {
+		    "prefix": "IsVisibleDerived()",
+		    "body": [
+		        "IsVisibleDerived($1)"
+		    ],
+		    "description": "bool IsVisibleDerived(long mask)\n\n判断该Entity在树形结构中是否对某个Mask可见。\n参数:\n  mask Mask的值\n返回:\n  布尔值，true表示可见，false表示不可见\n"
+		},
+	"IsVisibleDerived 2/2": {
+		    "prefix": "IsVisibleDerived()",
+		    "body": [
+		        "IsVisibleDerived()"
+		    ],
+		    "description": "bool IsVisibleDerived()\n\n判断该Entity在树形结构中是否可见。\n返回:\n  布尔值，true表示可见，false表示不可见\n注释：Deprecated. This method is deprecated and will be removed in SDK 1.5."
+		},
+	"IsVisibleTo": {
+		    "prefix": "IsVisibleTo()",
+		    "body": [
+		        "IsVisibleTo($1)"
+		    ],
+		    "description": "bool IsVisibleTo(long mask)\n\n判断该Entity是否对某个Mask可见。\n参数:\n  mask Mask的值\n返回:\n  true表示可见，false表示不可见\n"
+		},
+	"Load": {
+		    "prefix": "Load()",
+		    "body": [
+		        "Load($1)"
+		    ],
+		    "description": "void Load(char scene_file)\n\n从本地磁盘文件中读取一个Entity对象。\n参数:\n  scene_file 本地磁盘文件路径。"
+		},
+	"NewChild": {
+		    "prefix": "NewChild()",
+		    "body": [
+		        "NewChild($1)"
+		    ],
+		    "description": "Entity NewChild(char scene_file)\n\n为当前Entity新建一个子Entity。\n参数:\n  name 子Entity的名字"
+		},
+	"RayCast - Entity": {
+	    "prefix": "RayCast()",
+	    "body": [
+	        "RayCast( $1 , $2 , $3 )"
+	    ],
+	    "description": "RaycastHit RayCast(Vector3 start, Vector3 end, long mask)\n\n静态方法，判断当前场景中某物体与某向量是否发生碰撞\n参数:\n  start:向量起点\n  end:向量终点\n  mask:Mask值，只有符合该Mask值的Entity才会参与检测\n返回:\n  碰撞检测结果，存放在一个RaycastHit对象中\n"
+	},
+
+	"ScreenPointToRay - Entity": {
+		    "prefix": "ScreenPointToRay()",
+		    "body": [
+		        "ScreenPointToRay($1)"
+		    ],
+		    "description": "Ray ScreenPointToRay(Vector2 position)\n\n将某个二维屏幕坐标变换成一条三维射线，只有当该Entity有Camera组件时生效\n返回:\n 射线，用一个Ray表示"
+		},
+
+	"SetEnabled": {
+		    "prefix": "SetEnabled()",
+		    "body": [
+		        "SetEnabled($1)"
+		    ],
+		    "description": "void SetEnabled(bool e)\n\n设置该Entity的可见性\n参数:\n  e布尔值，true表示设置成可见，false表示设置成不可见\n"
+		},
+
+	"SetLayer": {
+		    "prefix": "SetLayer()",
+		    "body": [
+		        "SetLayer($1)"
+		    ],
+		    "description": "void SetLayer(int layer)\n\n重新指定该Entity的某个层（layer）标识。例如，某Entity已在0，4层，想要把它变更到第7层，则使用SetLayer(7)，此时Entity已不在0，4层，只在第7层。\n参数:\n  layer层的索引值。\n"
+		},
+
+	"SetLocalRotation - Entity": {
+		    "prefix": "SetLocalRotation()",
+		    "body": [
+		        "SetLocalRotation($1)"
+		    ],
+		    "description": "void SetLocalRotation(Quaternion q)\n\n设置该Entity的局部旋转属性\n参数:\n  q 想要设定的新旋转，用一个Quaternion表示\n"
+		},
+
+	"SetLocalScale - Entity": {
+		    "prefix": "SetLocalScale()",
+		    "body": [
+		        "SetLocalScale($1)"
+		    ],
+		    "description": "void SetLocalScale(Vector3 b)\n\n设置该Entity的局部缩放属性\n参数:\n b 想要设定的新缩放，用一个Vector3表示\n"
+		},
+
+	"SetLocalTransform - Entity": {
+		    "prefix": "SetLocalTransform()",
+		    "body": [
+		        "SetLocalTransform($1)"
+		    ],
+		    "description": "void SetLocalTransform(Transform t)\n\n设置该Entity的局部平移、旋转、缩放属性\n参数:\n t 想要设定的新平移、旋转、缩放，用一个Transform表示\n"
+		},
+
+	"SetLocalTranslation - Entity": {
+		    "prefix": "SetLocalTranslation()",
+		    "body": [
+		        "SetLocalTranslation($1)"
+		    ],
+		    "description": "void SetLocalTranslation(Vector3 b)\n\n设置该Entity的局部平移\n参数:\n b 想要设定的新平移，用一个Vector3表示\n"
+		},
+
+	"SetMask": {
+		    "prefix": "SetMask()",
+		    "body": [
+		        "SetMask($1)"
+		    ],
+		    "description": "void SetMask(long mask)\n\n设置Mask。一个Mask可以标识该Entity被赋予在哪些层（layer）里，例如，某Entity在第0，4，7层，则对应的Mask值为2^0 + 2^4 + 2^7 = 145\n参数:\n mask Mask的具体值。Mask为一个二进制位掩码，对应位为1表示在该层，对应位为0表示不在该层\n"
+		},
+	"SetParent": {
+		    "prefix": "SetParent()",
+		    "body": [
+		        "SetParent( $1 , $2 )"
+		    ],
+		    "description": "void SetParent(entity parent, bool keep)\n\n设置该Entity的父节点\n参数:\n parent 父节点Entity的指针\nkeep 是否保持自身的世界坐标，true表示保持自身的世界坐标，false表示保持自身的局部坐标\n"
+		},
+
+	"SetVisible": {
+		    "prefix": "SetVisible()",
+		    "body": [
+		        "SetVisible($1)"
+		    ],
+		    "description": "void SetVisible(bool v)\n\n设置该Entity的可见性\n参数:\n v 布尔值，true表示设置成可见，false表示设置成不可见\n注解:\n Deprecated. This method is deprecated and will be removed in SDK 1.5."
+		},
+
+	// Class Input:
+	"Input": {
+		    "prefix": "Input",
+		    "body": [
+		        "Input"
+		    ],
+		    "description": "输入管理类，用于管理整个场景的触屏输入"
+		},
+	// Class Input's Member Functions:
+	"GetMouseButton": {
+		    "prefix": "GetMouseButton()",
+		    "body": [
+		        "GetMouseButton($1)"
+		    ],
+		    "description": "static bool GetMouseButton(long index)\n\n静态方法，判断是否有任意手指触摸屏幕\n参数:\n index 该参数无意义\n返回:\n true表示有，false表示没有\n"
+		},
+	"GetMouseDown": {
+		    "prefix": "GetMouseDown()",
+		    "body": [
+		        "GetMouseDown($1)"
+		    ],
+		    "description": "static bool GetMouseDown(long index)\n\n静态方法，判断某个特定的手指是否按下\n参数:\n index 手指编号，0代表触屏获得的第一根手指，1代表触屏获得的第二根手指，以此类推\n返回:\n true表示按下，false表示未按下\n"
+		},
+	"GetMousePosition": {
+		    "prefix": "GetMousePosition()",
+		    "body": [
+		        "GetMousePosition()"
+		    ],
+		    "description": "static Vector2 GetMousePosition()\n\n静态方法，获得第一根手指按下的位置\n返回:\n 第一根手指按下的位置\n"
+		},
+	"GetMouseUp": {
+		    "prefix": "GetMouseUp()",
+		    "body": [
+		        "GetMouseUp($1)"
+		    ],
+		    "description": "static bool GetMouseUp(long index)\n\n静态方法，判断某个特定的手指是否抬起\n参数:\n index 手指编号，0代表触屏获得的第一根手指，1代表触屏获得的第二根手指，以此类推\n返回:\n true表示抬起，false表示未抬起\n"
+		},
+	"GetTouch": {
+		    "prefix": "GetTouch()",
+		    "body": [
+		        "GetTouch($1)"
+		    ],
+		    "description": "static Touch GetTouch(long index)\n\n静态方法，获得某个特定手指的Touch对象的指针\n参数:\n index 手指编号，0代表触屏获得的第一根手指，1代表触屏获得的第二根手指，以此类推\n返回:\n 某个特定手指的Touch对象的指针\n"
+		},
+	"TouchCount": {
+		    "prefix": "TouchCount()",
+		    "body": [
+		        "TouchCount()"
+		    ],
+		    "description": "static int TouchCount()\n\n静态方法，获得当前屏幕上的Touch总数\n返回:\n 当前屏幕上的Touch总数\n"
+		},
+	// Class Light
+	"Light": {
+		    "prefix": "Light",
+		    "body": [
+		        "Light"
+		    ],
+		    "description": "Light组件类\n\n继承自 FastAccessItem< T, O > ."
+		},
+	// Class Light's Member Functions:
+	"Color": {
+		    "prefix": "Color()",
+		    "body": [
+		        "Color()"
+		    ],
+		    "description": "Vector4 Color()\n\n得到场景中的主光源的颜色\n返回:\n 场景中的主光源的颜色\n"
+		},
+	"EstimationColor": {
+		"prefix": "EstimationColor()",
+		"body": [
+			"EstimationColor()"
+		],
+		"description": "Vector4 EstimationColor()\n\n（AR独有）获得真实相机（手机摄像头）中主光源颜色的估算值\n返回:\n 真实相机（手机摄像头）中主光源颜色的估算值\n"
+	},
+	"EstimationIntensity": {
+		"prefix": "EstimationIntensity()",
+		"body": [
+			"EstimationIntensity()"
+		],
+		"description": "float EstimationIntensity()\n\n（AR独有）获得真实相机（手机摄像头）中主光源强度的估算值\n返回:\n 真实相机（手机摄像头）中主光源强度的估算值\n"
+	},
+	"Intensity": {
+		"prefix": "Intensity()",
+		"body": [
+			"Intensity()"
+		],
+		"description": "float Intensity()\n\n获得该Light组件的光源强度\n返回:\n 该Light组件的光源强度\n"
+	},
+	"Main - Light": {
+		"prefix": "Main()",
+		"body": [
+			"Main()"
+		],
+		"description": "Entity Main()\n\n静态方法，获得整个场景中的主光源\n返回:\n 主光源所在的Entity\n"
+	},
+	"SetColor - Light": {
+		"prefix": "SetColor()",
+		"body": [
+			"SetColor($1)"
+		],
+		"description": "void SetColor(Vector4 c)\n\n设置该Light组件的RGB色彩值\n参数:\n c: 该Light组件的RGB色彩值\n"
+	},
+	"SetIntensity": {
+		"prefix": "SetIntensity()",
+		"body": [
+			"SetIntensity($1)"
+		],
+		"description": "void SetIntensity(float i)\n\n设置该Light组件的光源强度\n参数:\n i: 该Light组件的光源强度\n"
+	},
+	"SetMain": {
+		"prefix": "SetMain()",
+		"body": [
+			"SetMain($1)"
+		],
+		"description": "void SetMain(Entity c)\n\n静态方法，设置整个场景中的主光源\n参数:\n c: 想要设置成主光源的Entity指针\n"
+	},
+	// Class Logo
+	"Logo": {
+		    "prefix": "Logo",
+		    "body": [
+		        "Logo"
+		    ],
+		    "description": "Logo属性类\n\n"
+		},
+	// Class Logo's Member Functions:
+	"SetPositionSize": {
+		"prefix": "SetPositionSize()",
+		"body": [
+			"SetPositionSize($1)"
+		],
+		"description": "void SetPositionSize(LOGO_POSITION pos)\n\n静态方法，设置“Powered by 洞见”字样的位置。\n参数:\n pos: 想要设定的新位置的二维坐标\n"
+	},
+	// Struct Matrix4x4
+	"Matrix4x4": {
+		"prefix": "Matrix4x4",
+		"body": [
+			"Matrix4x4"
+		],
+		"description": "Position, rotation and scale of an object.\n\n"
+	},
+	// Struct Matrix4x4's Member Functions:
+	"ExtractPosition": {
+		"prefix": "ExtractPosition()",
+		"body": [
+			"ExtractPosition()"
+		],
+		"description": "Vector3 ExtractPosition()\n\nExtract the position component from this matrix.\n返回:\n The vector of position.\n"
+	},
+	"ExtractQuaternion": {
+		"prefix": "ExtractQuaternion()",
+		"body": [
+			"ExtractQuaternion()"
+		],
+		"description": "Quaternion ExtractQuaternion()\n\nExtract the rotation component from this matrix.\n返回:\n The quaternion of rotation.\n"
+	},
+	"ExtractScale": {
+		"prefix": "ExtractScale()",
+		"body": [
+			"ExtractScale()"
+		],
+		"description": "Vector3 ExtractScale()\n\nExtract the scale component from this matrix.\n返回:\n The vector of scale.\n"
+	},
+	"FromQuaternion": {
+		"prefix": "FromQuaternion()",
+		"body": [
+			"FromQuaternion($1)"
+		],
+		"description": "static Matrix4x4 FromQuaternion(Quaternion quaternion)\n\nStatic method. Transform a quaternion to a matrix.\n参数:\n quaternion: The quaternion.\n返回:\n The matrix.\n"
+	},
+	"GetForward": {
+		"prefix": "GetForward()",
+		"body": [
+			"GetForward()"
+		],
+		"description": "Vector3 GetForward()\n\nGet the forward component of this matrix. (i.e., Vector3(m20, m21, m22)\n返回:\n The forward component.\n"
+	},
+	"GetRight": {
+		"prefix": "GetRight()",
+		"body": [
+			"GetRight()"
+		],
+		"description": "Vector3 GetRight()\n\nGet the right component of this matrix. (i.e., Vector3(m00, m01, m02)\n返回:\n The right component.\n"
+	},
+	"GetUp": {
+		"prefix": "GetUp()",
+		"body": [
+			"GetUp()"
+		],
+		"description": "Vector3 GetUp()\n\nGet the up component of this matrix. (i.e., Vector3(m10, m11, m12)\n返回:\n The up component.\n"
+	},
+	"Identity - Matrix4x4": {
+		"prefix": "Identity()",
+		"body": [
+			"Identity()"
+		],
+		"description": "static Matrix4x4 Identity()\n\nStatic method. Returns the identity matrix.\n返回:\n Returns the identity matrix.\n"
+	},
+	"Inverse": {
+		"prefix": "Inverse()",
+		"body": [
+			"Inverse()"
+		],
+		"description": "Matrix4x4 Inverse()\n\nGet the inverse of this matrix.\n返回:\n The inverse of this matrix.\n"
+	},
+	// operator*() 略
+	// operator*() 略
+	// operator*() 略
+	"Perspective": {
+		"prefix": "Perspective()",
+		"body": [
+			"Perspective( $1 , $2 , $3 , $4 )"
+		],
+		"description": "static Matrix4x4 Perspective(float fov, float aspect, float near, float far)\n\nCreates a perspective projection matrix.\n参数:\n  fov:The vertical field-of-view in degrees of the perspective matrix.\n  aspect:The aspect ratio (width divided by height).\n  near:The near position of the depth clipping planes.\n  far:The far position of the depth clipping planes.\n返回:\n  the result of the perspective projection matrix.\n"
+	},
+	"SetValue": {
+		"prefix": "SetValue()",
+		"body": [
+			"SetValue( $1 , $2 , $3 )"
+		],
+		"description": "void SetValue(int x, int y, float value)\n\nSet the value of the specfic component of this matrix.\n参数:\n  x:the row index of this matrix.\n  y:the column index of this matrix.\n  value:The assigned value.\n"
+	},
+	"ToQuaternion": {
+		"prefix": "ToQuaternion()",
+		"body": [
+			"ToQuaternion()"
+		],
+		"description": "Quaternion ToQuaternion()\n\nTransform this matrix to a quaternion.\n返回:\n The quaternion.\n"
+	},
+
+	// Class OS
+	"OS": {
+		    "prefix": "OS",
+		    "body": [
+		        "OS"
+		    ],
+		    "description": "与操作系统相关的属性类\n\n"
+		},
+	// Class OS's Member Functions:
+	"Name": {
+		"prefix": "Name()",
+		"body": [
+			"Name()"
+		],
+		"description": "char Name()\n\n静态方法，获得操作系统名称.\n返回:\n 操作系统名称\n\n注解:\n Lua用法举例：World.OS.Name()\n"
+	},
+	// Class Property
+	"Property": {
+		    "prefix": "Property",
+		    "body": [
+		        "Property"
+		    ],
+		    "description": "物体材质上的属性\n\n继承自 Bindable .\n"
+		},
+	// Class Property's Member Functions:
+	"CreateTexture 1/2": {
+		    "prefix": "CreateTexture()",
+		    "body": [
+		        "CreateTexture($1)"
+		    ],
+		    "description": "Texture CreateTexture(char src_path)\n\n创建一个新的纹理对象\n参数:\n src_path 纹理对象的磁盘文件路径\n返回:\n 纹理对象\n"
+		},
+	"CreateTexture 2/2": {
+		"prefix": "CreateTexture()",
+		"body": [
+			"CreateTexture( $1 , $2 , $3 , $4 , $5 , $6 )"
+		],
+		"description": "Texture CreateTexture(char name, int w, int h, int format, bool render_target, bool using_depth )\n\n创建一个新的空白纹理对象\n参数:\n  name:纹理对象的名称.\n  w:纹理对象的宽度.\n  h:纹理对象的高度.\n  format:纹理对象的格式.\n  render_target:是否为一个渲染目标纹理.\n  using_depth:（可选）该纹理对象是否为深度缓存纹理\n返回:\n 纹理对象\n返回:\n format的值约定如下：TEXTURE_FORMAT_UNKNOWN = 0,FORMAT_R8 = 1,FORMAT_RG8 = 2,FORMAT_RGB8 = 3,FORMAT_RGBA8 = 4,FORMAT_R32 = 5,FORMAT_RG32 = 6,FORMAT_RGB32 = 7,FORMAT_RGBA32 = 8,FORMAT_YUV = 9,FORMAT_Y = 10,FORMAT_UV = 11\n"
+	},
+	"GetFloat": {
+		"prefix": "GetFloat()",
+		"body": [
+			"GetFloat()"
+		],
+		"description": "float GetFloat()\n\n对于一个浮点数属性，获得其浮点数的值。或者对于一个Vector4的属性，获得其x分量的浮点数的值\n返回:\n 浮点数的值\n"
+	},
+	"GetMatrix": {
+		"prefix": "GetMatrix()",
+		"body": [
+			"GetMatrix()"
+		],
+		"description": "Matrix4x4 GetMatrix()\n\n对于一个Matrix4x4的属性，获得其Matrix4x4值\n返回:\n Matrix4x4值\n"
+	},
+	"GetName - Property": {
+		"prefix": "GetName()",
+		"body": [
+			"GetName()"
+		],
+		"description": "char GetName()\n\n获得该属性的名称\n返回:\n 一个包含属性名称的字符数组\n"
+	},
+	"GetTexture": {
+		"prefix": "GetTexture()",
+		"body": [
+			"GetTexture()"
+		],
+		"description": "Texture GetTexture()\n\n对于一个纹理对象属性，获得其纹理对象\n返回:\n 纹理对象\n"
+	},
+	"GetType": {
+		"prefix": "GetType()",
+		"body": [
+			"GetType()"
+		],
+		"description": "PROPERTY_TYPE GetType()\n\n获得该属性的类型\n返回:\n 一个包含属性名称的字符数组指针\n"
+	},
+	"GetVector4": {
+		"prefix": "GetVector4()",
+		"body": [
+			"GetVector4()"
+		],
+		"description": "Vector4 GetVector4()\n\n对于一个Vector4的属性，获得其Vector4值\n返回:\n Vector4值\n"
+	},
+	// Set（） 略
+	// Set（） 略
+	// Set（） 略
+	// Set（） 略
+	"SetText - Property": {
+		"prefix": "SetText()",
+		"body": [
+			"SetText( $1 , $2 , $3 , $4 , $5 , $6 , $7 , $8 , $9 , $10 , $11 , $12 , $13 , $14 , $15 )"
+		],
+		"description": "Texture SetText(char text, int w, int h, int x0, int y0, int x1, int y1, char font, float font_width, float font_height, font_engine::FLAG flag, int char_stride, int line_stride, font_engine::DIRECTION direction, font_engine::ALIGNMENT alignment)\n\n对于一个纹理对象属性，设置其纹理上想要显示的文字\n参数:\n  text:想要显示的文字，用一个字符数组的指针表示.\n  w:用于显示文字的矩形框的宽度\n  h:用于显示文字的矩形框的高度\n  x0:文字距离矩形框边界左下角的距离（边界宽度）的横坐标值.\n  y0:文字距离矩形框边界左下角的距离（边界宽度）的纵坐标值.\n  x1:文字距离矩形框边界右上角的距离（边界宽度）的横坐标值.\n  y1:文字距离矩形框边界右上角的距离（边界宽度）的纵坐标值\n  font:字体名称，如iOS设备的默认字体名称为“PingFangSC-Regular”，Android设备的默认字体名称为“DroidSans”\n  font_width:单个文字的宽度.\n  font_height:单个文字的高度.\n  flag:文字风格属性，可以使用掩码的方式控制，如需要粗体和斜体，则传入768即可（FLAG::FLAG_BOLD + FLAG::FLAG_ITALIC = 0x300 = 768）。\n  char_stride:字间距.\n  line_stride:行间距.\n  direction:文字方向.\n  alignment:文字对齐方式，可以使用掩码的方式控制，如需要居中对齐，则传入18即可（ALIGNMENT::ALIGNMENT_H_MID + ALIGNMENT::ALIGNMENT_V_MID = 18）。\n警告:\n 目前版本只支持文字风格属性font_engine::FLAG = 0，其他风格如粗体等暂不支持\n注解:\n Lua用法举例：textTex:SetText(\"这是一段测试文本\n\", 512, 128, 20, 20, 492, 236, \"PingFangSC-Regular\", 14, 14, 0, 30, 30, 0, 1 );\n"
+	},
+	// Struct Quaternion
+	"Quaternion": {
+		"prefix": "Quaternion",
+		"body": [
+			"Quaternion"
+		],
+		"description": "Quaternions are used to represent rotations.\n\n"
+	},
+	// Struct Quaternion's Member Functions:
+
+	"AngleAxis 1/2": {
+		"prefix": "AngleAxis()",
+		"body": [
+			"AngleAxis( $1 , $2 )"
+		],
+		"description": "static Quaternion AngleAxis(float angle, Vector3 axis)\n\nparam: angle in degree\nStatic method. Creates a rotation which rotates angle degrees around axis.\n参数:\n  angle:The angle.\n  axis:The axis.\n返回:\n the result quaternion of rotation.\n注解:\n Lua script usage: World.Quaternion.AngleAxis(30, World.Vector3.Up())\n"
+	},
+	"AngleAxis 2/2": {
+		"prefix": "AngleAxis()",
+		"body": [
+			"AngleAxis( $1 , $2 , $3 , $4 )"
+		],
+		"description": "static Quaternion AngleAxis(float angle, float ax, float ay, float az)\n\nStatic method. Creates a rotation which rotates angle degrees around axis.\n参数:\n  angle:The angle.\n  ax:The X axis.\n  ay:The Y axis.\n  az:The Z axis.\n返回:\n the result quaternion of rotation.\n注解:\n Lua script usage: World.Quaternion.AngleAxis(30, 0, 0, 1)\n"
+	},
+	"Euler 1/2": {
+		"prefix": "Euler()",
+		"body": [
+			"Euler( $1 , $2 , $3 )"
+		],
+		"description": "static Quaternion Euler(float x, float y, float z)\n\nreturn: angle in degree\nStatic method. Returns a rotation that rotates z degrees around the z axis, x degrees around the x axis, and y degrees around the y axis.\n参数:\n  x:x degrees.\n  y:y degrees.\n  z:z degrees.\n注解:\n Lua script usage: World.Quaternion.Euler(0, 30, 0)\n"
+	},
+	"Euler 2/2": {
+		"prefix": "Euler()",
+		"body": [
+			"Euler( $1 , $2 , $3 , $4 )"
+		],
+		"description": "static Quaternion Euler(Vector3 e)\n\nStatic method. Returns a rotation that rotates z degrees around the z axis, x degrees around the x axis, and y degrees around the y axis.\n参数:\n  e :The x, y, z degrees stored in a Vector3\n注解:\n Lua script usage: World.Quaternion.Euler(World.Vector3.New(0, 30, 0))\n"
+	},
+	"EulerAngles": {
+		"prefix": "EulerAngles()",
+		"body": [
+			"EulerAngles()"
+		],
+		"description": "Vector3 EulerAngles()\n\nReturns a rotation that rotates z degrees around the z axis, x degrees around the x axis, and y degrees around the y axis.\n返回:\n The result rotation.\n"
+	},
+	"FromRotation": {
+		"prefix": "FromRotation()",
+		"body": [
+			"FromRotation( $1 , $2 )"
+		],
+		"description": "static Quaternion FromRotation(transform_ROTATION type, Vector4 rot)\n\nStatic method. Creates a rotation which rotates from fromDirection to toDirection.\n参数:\n  type:The rotation type.\n  rot:The rotation.\n返回:\n the result quaternion of rotation.\n注解:\n the parameter 'type' can be one of these: \ntransform_ROTATION_NONE = 0 \ntransform_ROTATION_DEFAULT = 1 \ntransform_ROTATION_QUATERNION = 2 \ntransform_ROTATION_EULAR_XYZ = 3 \ntransform_ROTATION_EULAR_YZX = 4 \ntransform_ROTATION_EULAR_ZXY = 5 \ntransform_ROTATION_EULAR_XZY = 6 \ntransform_ROTATION_EULAR_YXZ = 7 \ntransform_ROTATION_EULAR_ZYX = 8 \nLua script usage: World.Quaternion.FromRotation(type, rot)\n"
+	},
+	"Identity - Quaternion": {
+		"prefix": "Identity()",
+		"body": [
+			"Identity()"
+		],
+		"description": "static Quaternion Identity()\n\nStatic method. Returns a quaternion with default value of (1, 0, 0, 0)\n"
+	},
+	"Length": {
+		"prefix": "Length()",
+		"body": [
+			"Length()"
+		],
+		"description": "float Length()\n\nGet the length of this vector\n返回:\n the length of this Quaternion\n"
+	},
+	"Lerp": {
+		"prefix": "Lerp()",
+		"body": [
+			"Lerp( $1 , $2 )"
+		],
+		"description": "Quaternion Lerp(Quaternion b, float r)\n\nInterpolates between this quaternion and b by r and normalizes the result afterwards. The parameter r is clamped to the range [0, 1]. This is faster than Slerp but looks worse if the rotations are far apart.\n参数:\n  b:Another quaternion.\n  r:lerp factor.\n返回:\n the lerp result of two vectors.\n"
+	},
+	"LookRotation": {
+		"prefix": "LookRotation()",
+		"body": [
+			"LookRotation( $1 , $2 )"
+		],
+		"description": "Quaternion LookRotation(Vector3 f, Vector3 u)\n\nCreates a rotation with the specified forward and upwards directions.\n参数:\n  f:The direction to look in.\n  u:The vector that defines in which direction up is.\n返回:\n the computed quaternion. If used to orient a Transform, the Z axis will be aligned with forward/ and the Y axis with upwards if these vectors are orthogonal. Logs an error if the forward direction is zero.\n"
+	},
+	"New": {
+		"prefix": "New()",
+		"body": [
+			"New( $1 , $2 , $3 , $4 )"
+		],
+		"description": "static Quaternion New(float pi, float pj, float pk, float ps)\n\nStatic method. Create a new Quaternion object.\n参数:\n  pi:The value of I\n  pj:The value of J\n  pk:The value of K\n  ps:The value of S\n注释:\n Lua Script Usage: World.Quaternion.New(0, 0, 0, 0)\n"
+	},
+	"Normalize": {
+		"prefix": "Normalize()",
+		"body": [
+			"Normalize( $1 )"
+		],
+		"description": "static Quaternion Normalize(Quaternion q)\n\nStatic Method. Get this vector with a magnitude of 1\n参数:\n  q:the Quaternion\n注释:\n Lua Script Usage: World.Vector4.Normalize(v)\n"
+	},
+
+	// +-*/ 略
+
+	"SetI": {
+		"prefix": "SetI()",
+		"body": [
+			"SetI( $1 )"
+		],
+		"description": "static float SetI(float p)\n\nSet the I component of the vector.\n参数:\n  p:the value of I\n"
+	},
+	"SetJ": {
+		"prefix": "SetJ()",
+		"body": [
+			"SetJ( $1 )"
+		],
+		"description": "static float SetJ(float p)\n\nSet the J component of the vector.\n参数:\n  p:the value of J\n"
+	},
+	"SetK": {
+		"prefix": "SetK()",
+		"body": [
+			"SetK( $1 )"
+		],
+		"description": "static float SetK(float p)\n\nSet the K component of the vector.\n参数:\n  p:the value of K\n"
+	},
+	"SetS": {
+		"prefix": "SetS()",
+		"body": [
+			"SetS( $1 )"
+		],
+		"description": "static float SetS(float p)\n\nSet the S component of the vector.\n参数:\n  p:the value of S\n"
+	},
+	"Slerp": {
+		"prefix": "Slerp()",
+		"body": [
+			"Slerp( $1 , $2 )"
+		],
+		"description": "Quaternion Slerp(Quaternion b, float r)\n\nSpherically interpolates between this quaternion and b by r. The parameter t is clamped to the range [0, 1].\n参数:\n  b:Another quaternion.\n  r:lerp factor.\n返回:\n the lerp result of two vectors.\n"
+	},
+	"ToAngleAxis": {
+		"prefix": "ToAngleAxis()",
+		"body": [
+			"ToAngleAxis( $1 , $2 )"
+		],
+		"description": "void ToAngleAxis(float out_angle, Vector3 out_axis)\n\nparam: angle in degree\nConverts a rotation to angle-axis representation (angles in degrees).\n参数:\n  out_angle:The angle to rotate.\n  out_axis:The axis to rotate by. Stored in a Vector3.\n"
+	},
+	// Struct Ray
+	"Ray": {
+		"prefix": "Ray",
+		"body": [
+			"Ray"
+		],
+		"description": "射线结构体.\n\n"
+	},
+	// Struct Ray's Member Functions:
+	"GetDirection": {
+		"prefix": "GetDirection()",
+		"body": [
+			"GetDirection()"
+		],
+		"description": "Vector3 GetDirection()\n\n获得射线方向向量在世界坐标系下的表示\n"
+	},
+	"GetOrigin": {
+		"prefix": "GetOrigin()",
+		"body": [
+			"GetOrigin()"
+		],
+		"description": "Vector3 GetOrigin()\n\n获得射线的起点的世界坐标值\n"
+	},
+	// Struct RaycastHit
+	"RaycastHit": {
+		"prefix": "RaycastHit",
+		"body": [
+			"RaycastHit"
+		],
+		"description": "碰撞检测结构体.\n\n"
+	},
+	// Struct RaycastHit's Member Functions:
+	"GetCollider": {
+		"prefix": "GetCollider()",
+		"body": [
+			"GetCollider()"
+		],
+		"description": "Collider GetCollider()\n\n获得碰撞结构体的collider对象\n"
+	},
+	"GetColliderType": {
+		"prefix": "GetColliderType()",
+		"body": [
+			"GetColliderType()"
+		],
+		"description": "COLLIDER_TYPE GetColliderType()\n\n获得碰撞检测结构体的类型\n"
+	},
+	"GetDistance": {
+		"prefix": "GetDistance()",
+		"body": [
+			"GetDistance()"
+		],
+		"description": "float GetDistance()\n\n获得碰撞进入位置和结束位置之间的距离值\n"
+	},
+	"GetEntity": {
+		"prefix": "GetEntity()",
+		"body": [
+			"GetEntity()"
+		],
+		"description": "Entity GetEntity()\n\n获得碰撞结构体的拥有者\n"
+	},
+	"GetLocalEnter": {
+		"prefix": "GetLocalEnter()",
+		"body": [
+			"GetLocalEnter()"
+		],
+		"description": "Vector3 GetLocalEnter()\n\n获得碰撞进入位置的局部坐标值\n"
+	},
+	"GetLocalExit": {
+		"prefix": "GetLocalExit()",
+		"body": [
+			"GetLocalExit()"
+		],
+		"description": "Vector3 GetLocalExit()\n\n获得碰撞离开位置的局部坐标值\n"
+	},
+	"GetWorldEnter": {
+		"prefix": "GetWorldEnter()",
+		"body": [
+			"GetWorldEnter()"
+		],
+		"description": "Vector3 GetWorldEnter()\n\n获得碰撞进入位置的世界坐标值\n"
+	},
+	"GetWorldExit": {
+		"prefix": "GetWorldExit()",
+		"body": [
+			"GetWorldExit()"
+		],
+		"description": "Vector3 GetWorldExit()\n\n获得碰撞离开位置的世界坐标值\n"
+	},
+	// Struct RectInt
+	"RectInt": {
+		"prefix": "RectInt",
+		"body": [
+			"RectInt"
+		],
+		"description": "A 2D Rectangle defined by x, y, width, height with integers(Read Only)..\n\n"
+	},
+	// Struct RectInt's Member Functions:
+	// 略
+
+	// Struct RectTransform
+	"RectTransform": {
+		"prefix": "RectTransform",
+		"body": [
+			"RectTransform"
+		],
+		"description": "Position, size, anchor and pivot information for a rectangle. RectTransforms are used for GUI but can also be used for other things. It's used to store and manipulate the position, size, and anchoring of a rectangle and supports various forms of scaling based on a parent RectTransform.\n\n"
+	},
+	// Struct RectTransform's Member Functions:
+	"GetAnchoredPosition": {
+		"prefix": "GetAnchoredPosition()",
+		"body": [
+			"GetAnchoredPosition()"
+		],
+		"description": "Vector3 GetAnchoredPosition()\n\nThe position of the pivot of this RectTransform relative to the anchor reference point.\n"
+	},
+	"GetAnchorMax": {
+		"prefix": "GetAnchorMax()",
+		"body": [
+			"GetAnchorMax()"
+		],
+		"description": "Vector2 GetAnchorMax()\n\nThe normalized position in the parent RectTransform that the upper right corner is anchored to.\n"
+	},
+	"GetAnchorMin": {
+		"prefix": "GetAnchorMin()",
+		"body": [
+			"GetAnchorMin()"
+		],
+		"description": "Vector2 GetAnchorMin()\n\nThe normalized position in the parent RectTransform that the lower left corner is anchored to.\n"
+	},
+	"GetPivot": {
+		"prefix": "GetPivot()",
+		"body": [
+			"GetPivot()"
+		],
+		"description": "Vector2 GetPivot()\n\nThe normalized position in this RectTransform that it rotates around.\n"
+	},
+	"GetRect - RectTransform": {
+		"prefix": "GetRect()",
+		"body": [
+			"GetRect()"
+		],
+		"description": "Vector4 GetRect()\n\nThe calculated rectangle in the local space of the RectTransform.\n"
+	},
+	"SetAnchoredPosition": {
+		"prefix": "SetAnchoredPosition()",
+		"body": [
+			"SetAnchoredPosition( $1 )"
+		],
+		"description": "void SetAnchoredPosition(Vector3 src)\n\nSet the position of the pivot of this RectTransform relative to the anchor reference point.\n参数:\n  src : The new position (x,y,z) stored as a const Vector3.\n"
+	},
+	"SetAnchorMax": {
+		"prefix": "SetAnchorMax()",
+		"body": [
+			"SetAnchorMax( $1 )"
+		],
+		"description": "void SetAnchorMax(Vector2 src)\n\nSet the normalized position in the parent RectTransform that the upper right corner is anchored to.\n参数:\n  src : The new normalized position (x,y) stored as a const Vector2.\n"
+	},
+	"SetAnchorMin": {
+		"prefix": "SetAnchorMin()",
+		"body": [
+			"SetAnchorMin( $1 )"
+		],
+		"description": "void SetAnchorMin(Vector2 src)\n\nSet the normalized position in the parent RectTransform that the lower left corner is anchored to.\n参数:\n  src : The new normalized position (x,y) stored as a const Vector2.\n"
+	},
+	"SetPivot": {
+		"prefix": "SetPivot()",
+		"body": [
+			"SetPivot( $1 )"
+		],
+		"description": "void SetPivot(Vector2 src)\n\nSet the normalized position in this RectTransform that it rotates around.\n参数:\n  src : The new normalized position (x,y) stored as a const Vector2.\n"
+	},
+	"SetRect - RectTransform": {
+		"prefix": "SetRect()",
+		"body": [
+			"SetRect( $1 )"
+		],
+		"description": "void SetRect(Vector4 src)\n\nSet the calculated rectangle in the local space of the Transform.\n参数:\n  src : The new rectangle (x,y,w,h) stored as a const Vector4.\n"
+	},
+
+	// Class Render
+	"Render": {
+		"prefix": "Render",
+		"body": [
+			"Render"
+		],
+		"description": "Render组件类\n\n继承自 FastAccessItem< T, O > .\n"
+	},
+	// Class Render's Member Functions:
+	"FindProperty - Render": {
+		"prefix": "FindProperty()",
+		"body": [
+			"FindProperty( $1 , $2 )"
+		],
+		"description": "Property FindProperty(char name, float material_index)\n\n根据属性名称和材质索引来查找某个属性对象\n参数:\n  name:想要进行查找的属性名称\n  material_index:该Render组件上的材质索引，如果该Render组件上只有一个材质，则该参数为0\n  返回:\n 属性对象，若找不到该属性，则返回空\n"
+	},
+	"GetBoundsCenter": {
+		"prefix": "FindProperty()",
+		"body": [
+			"GetBoundsCenter()"
+		],
+		"description": "Vector3 GetBoundsCenter()\n\n获得该Render组件上的模型包围盒中心点\n  返回:\n 模型包围盒中心点\n"
+	},
+	"GetMaterial - Render": {
+		"prefix": "GetMaterial()",
+		"body": [
+			"GetMaterial( $1 )"
+		],
+		"description": "Material GetMaterial()\n\n获得该Render组件上的某个材质对象\n  参数:\n  index： 想要获得的材质索引，如果该Render组件上只有一个材质，则该参数为0\n  返回:\n 材质对象，若找不到该材质，则返回空\n"
+	},
+	"GetMaterialCount": {
+		"prefix": "GetMaterialCount()",
+		"body": [
+			"GetMaterialCount()"
+		],
+		"description": "int GetMaterialCount()\n\n获得该Render组件上材质对象的数量\n  返回:\n 材质对象的数量\n"
+	},
+	"HasPass": {
+		"prefix": "HasPass()",
+		"body": [
+			"HasPass( $1 , $2 )"
+		],
+		"description": "bool HasPass(int material_index, int pass_index)\n\n判断该Render组件上的某个材质是否拥有某个特定的Pass\n参数:\n  material_index:想要查询的材质索引，如果该Render组件上只有一个材质，则该参数为0\n  pass_index: 给定材质索引后，想要查询的Pass索引\n"
+	},
+	"SetBlending": {
+		"prefix": "SetBlending()",
+		"body": [
+			"SetBlending( $1 , $2 , $3 , $4 , $5 , $6 , $7 , $8 )"
+		],
+		"description": "void SetBlending(int material_index, int pass_index, int src_color, int dest_color, int src_alpha, int dest_alpha, int op_color, int op_alpha)\n\n设置该Render组件上的透明混合模式（Blend Mode）\n参数:\n  material_index: 想要设置的材质索引，如果该Render组件上只有一个材质，则该参数为0\n  pass_index: 给定材质索引后，想要设置的Pass索引，如果该材质上只有一个Pass，则该参数为0\n  src_color: 想要设置的源像素的RGB透明混合因子\n  dest_color: 想要设置的目标像素的RGB透明混合因子\n  src_alpha: 想要设置的源像素的Alpha透明混合因子\n  dest_alpha: 想要设置的目标像素的Alpha透明混合因子\n  op_color: 想要设置的源像素的RGB透明混合运算符\n  op_alpha: 想要设置的目标像素的Alpha透明混合运算符\n  注解:\n src_color、dest_color、src_alpha、dest_alpha的值约定为:\n  BLEND_FACTOR_ONE = 0 \n  BLEND_FACTOR_ZERO = 1 \n  BLEND_FACTOR_SRC_COLOR = 2 \n  BLEND_FACTOR_DEST_COLOR = 3 \n  BLEND_FACTOR_SRC_ALPHA = 4 \n  BLEND_FACTOR_DEST_ALPHA = 5 \n  BLEND_FACTOR_ONE_MINUS_SRC_COLOR = 6 \n  BLEND_FACTOR_ONE_MINUS_DEST_COLOR = 7 \n  BLEND_FACTOR_ONE_MINUS_SRC_ALPHA = 8 \n  BLEND_FACTOR_ONE_MINUS_DEST_ALPHA = 9 \n  op_color、op_alpha的值约定为： \n  BLEND_OPERATOR_OFF = 0 \n  BLEND_OPERATOR_ADD = 1 \n  BLEND_OPERATOR_SUB = 2 \n  BLEND_OPERATOR_REV_SUB = 3 \n  BLEND_OPERATOR_MINIMUN = 4 \n  BLEND_OPERATOR_MAXIMUN = 5 \n  透明混合模式的详细介绍可以参考网址： \n  https://docs.unity3d.com/ScriptReference/Rendering.BlendMode.html \n  https://docs.unity3d.com/ScriptReference/Rendering.BlendOp.html\n"
+	},
+	"SetCullMode": {
+		"prefix": "SetCullMode()",
+		"body": [
+			"SetCullMode( $1 , $2 , $3 )"
+		],
+		"description": "void SetCullMode(int material_index, int pass_index, int cull_mode)\n\n设置该Render组件上的渲染剔除模式（Cull Mode）\n参数:\n  material_index: 想要设置的材质索引，如果该Render组件上只有一个材质，则该参数为0\n  pass_index: 给定材质索引后，想要设置的Pass索引，如果该材质上只有一个Pass，则该参数为0\n  cull_mode: 想要设置的渲染剔除模式\n  注解:\n  cull_mode的值约定为：CULL_FRONT = 0,CULL_BACK = 1,CULL_BOTH = 2,CULL_NONE = 3\n"
+	},
+	"SetDepth": {
+		"prefix": "SetDepth()",
+		"body": [
+			"SetDepth( $1 , $2 , $3 , $4 )"
+		],
+		"description": "void SetDepth(int material_index, int pass_index, int func, bool write)\n\n将该Render组件上的某个材质的某个Pass设置成深度渲染模式，通常用于Shadowmap渲染或屏幕后处理特效\n参数:\n  material_index: 想要设置的材质索引，如果该Render组件上只有一个材质，则该参数为0\n  pass_index: 给定材质索引后，想要设置的Pass索引，如果该材质上只有一个Pass，则该参数为0\n  func: 想要设置的渲染剔除模式\n  write: 是否允许写入深度缓冲\n  注解:\n func的值约定为：DEPTH_OFF = 0,DEPTH_NEVER = 1,DEPTH_LESS = 2,DEPTH_EQUAL = 3,DEPTH_LEQUAL = 4,DEPTH_GREATER = 5,DEPTH_NOT_EQUAL = 6,DEPTH_GEQUAL = 7,DEPTH_ALWAYS = 8\n"
+	},
+	"SetMaterial - Render": {
+		"prefix": "SetMaterial()",
+		"body": [
+			"SetMaterial( $1 , $2 )"
+		],
+		"description": "void SetMaterial(int index, char path)\n\n设置该Render组件上的材质对象\n参数:\n  index: 想要进行设置的材质索引，如果该Render组件上只有一个材质，则该参数为0 \n path: 材质对象的本地磁盘路径\n  返回:\n 材质对象，若找不到该材质或设置失败，则返回空\n"
+	},
+
+	// Class Screen
+	"Screen": {
+		"prefix": "Screen",
+		"body": [
+			"Screen"
+		],
+		"description": "与屏幕尺寸相关的属性类\n\n"
+	},
+	// Class Screen's Member Functions:
+	"Aspect": {
+		"prefix": "Aspect()",
+		"body": [
+			"Aspect()"
+		],
+		"description": "static float Aspect()\n\n静态方法，获得当前屏幕的像素宽高比\n返回:\n  当前屏幕的像素宽高比\n注解: Lua用法举例：World.Screen.Aspect()\n"
+	},
+	"Height": {
+		"prefix": "Height()",
+		"body": [
+			"Height()"
+		],
+		"description": "static int Height()\n\n静态方法，获得当前屏幕的像素高度\n返回:\n  当前屏幕的像素高度\n注解: Lua用法举例：World.Screen.Height()\n"
+	},
+	"Width": {
+		"prefix": "Width()",
+		"body": [
+			"Width()"
+		],
+		"description": "static int Width()\n\n静态方法，获得当前屏幕的像素宽度\n返回:\n  当前屏幕的像素宽度\n注解: Lua用法举例：World.Screen.Width()\n"
+	},
+	// Class Texture
+	"Texture": {
+		"prefix": "Texture",
+		"body": [
+			"Texture"
+		],
+		"description": "纹理类\n\n"
+	},
+	// Class Texture's Member Functions:
+	"GetDepth": {
+		"prefix": "GetDepth()",
+		"body": [
+			"GetDepth()"
+		],
+		"description": "int GetDepth()\n\n获得纹理的高度\n返回:\n  纹理的高度\n注解: 目前版本不支持获得纹理的高度，该方法将总是返回0值\n"
+	},
+	"GetDuration": {
+		"prefix": "GetDuration()",
+		"body": [
+			"GetDuration()"
+		],
+		"description": "double GetDuration()\n\n获得该纹理时长，只对视频纹理生效\n返回:\n  纹理时长\n"
+	},
+	"GetHeight": {
+		"prefix": "GetHeight()",
+		"body": [
+			"GetHeight()"
+		],
+		"description": "int GetHeight()\n\n获得纹理的高度\n返回:\n  纹理的高度\n"
+	},
+	"GetTime - Texture": {
+		"prefix": "GetTime()",
+		"body": [
+			"GetTime()"
+		],
+		"description": "double GetTime()\n\n获得该纹理当前播放位置，只对视频纹理生效\n返回:\n  纹理当前播放位置\n"
+	},
+	"GetWidth": {
+		"prefix": "GetWidth()",
+		"body": [
+			"GetWidth()"
+		],
+		"description": "int GetWidth()\n\n获得纹理的宽度\n返回:\n  纹理的宽度\n"
+	},
+	"IsPlaying - Texture": {
+		"prefix": "IsPlaying()",
+		"body": [
+			"IsPlaying()"
+		],
+		"description": "bool IsPlaying()\n\n判断该纹理是否正在播放，只对视频纹理生效\n"
+	},
+	"IsReady": {
+		"prefix": "IsReady()",
+		"body": [
+			"IsReady()"
+		],
+		"description": "bool IsReady()\n\n判断该纹理是否已加载完毕，对普通纹理和视频纹理都生效\n"
+	},
+	"LoadFile": {
+		"prefix": "LoadFile()",
+		"body": [
+			"LoadFile( $1 )"
+		],
+		"description": "bool LoadFile(char src_path)\n\n从本地磁盘路径中创建一个纹理对象\n参数:\n  src_path: 本地磁盘路径 \n path: 材质对象的本地磁盘路径\n  返回:\n 纹理对象是否创建成功的标识符\n"
+	},
+	"Pause - Texture": {
+		"prefix": "Pause()",
+		"body": [
+			"Pause()"
+		],
+		"description": "void Pause()\n\n暂停纹理，只对视频纹理生效\n"
+	},
+	"Play - Texture": {
+		"prefix": "Play()",
+		"body": [
+			"Play()"
+		],
+		"description": "bool Play()\n\n播放纹理，只对视频纹理生效\n"
+	},
+	"Reload - Texture": {
+		"prefix": "Reload()",
+		"body": [
+			"Reload()"
+		],
+		"description": "bool Reload()\n\n重新加载纹理，通常用于视频纹理\n"
+	},
+	"SetSampler": {
+		"prefix": "SetSampler()",
+		"body": [
+			"SetSampler( $1 , $2 , $3 , $4 )"
+		],
+		"description": "void SetSampler(int wrap_u, int wrap_v, int wrap_w, int filter)\n\n设置纹理的采样及滤波方式\n参数:\n  wrap_u: 纹理坐标u值的采样方式\n  wrap_v: 纹理坐标v值的采样方式\n  wrap_w: 纹理坐标w值的采样方式\n  filter: 滤波方式\n  注解:\n wrap_u、wrap_v、wrap_w的值约定如下：TEXTURE_WRAP_UNKNOWN = 0,WRAP_REPEAT = 1,WRAP_MIRROR = 2,WRAP_CLAMP = 3 filter的值约定如下：TEXTURE_FILTER_UNKNOWN = 0,FILTER_POINT = 1,FILTER_BILINEAR = 2,FILTER_TRILINEAR = 3,FILTER_ANISOTROPIC = 4\n"
+	},
+	"SetTime": {
+		"prefix": "SetTime()",
+		"body": [
+			"SetTime( $1 )"
+		],
+		"description": "void SetTime(double time)\n\n设置该纹理当前播放位置，只对视频纹理生效\n参数:\n  time: 纹理当前播放位置\n"
+	},
+	"SetVolume": {
+		"prefix": "SetVolume()",
+		"body": [
+			"SetVolume( $1 )"
+		],
+		"description": "bool SetVolume(float volume)\n\n设置该纹理播放音量，只对视频纹理生效\n参数:\n  volume: 纹理播放音量\n"
+	},
+	"Unload": {
+		"prefix": "Unload()",
+		"body": [
+			"Unload()"
+		],
+		"description": "void Unload()\n\n卸载纹理，通常用于视频纹理\n"
+	},
+	// Class Time
+	"Time": {
+		"prefix": "Time",
+		"body": [
+			"Time"
+		],
+		"description": "用于管理时间的类\n\n"
+	},
+	// Class Time's Member Functions:
+	"DeltaTime": {
+		"prefix": "DeltaTime()",
+		"body": [
+			"DeltaTime()"
+		],
+		"description": "static double DeltaTime()\n\n静态方法，获得从上一帧开始到上一帧结束的时长\n返回:\n  上一帧开始到上一帧结束的时长\n"
+	},
+	"FrameCount": {
+		"prefix": "FrameCount()",
+		"body": [
+			"FrameCount()"
+		],
+		"description": "static long FrameCount()\n\n静态方法，获得当前总帧数\n返回:\n  当前总帧数\n"
+	},
+	"GetAbsoluteTime": {
+		"prefix": "GetAbsoluteTime()",
+		"body": [
+			"GetAbsoluteTime()"
+		],
+		"description": "double GetAbsoluteTime()\n\n静态方法，获得当前场景运行的总时间\n返回:\n  当前场景运行的总时间，单位为秒\n"
+	},
+	"GetTime - Time": {
+		"prefix": "GetTime()",
+		"body": [
+			"GetTime()"
+		],
+		"description": "static double GetTime()\n\n静态方法，获得当前场景第一帧开始的时间\n返回:\n  当前场景第一帧开始的时间，单位为秒\n"
+	},
+	// Class Touch
+	"Touch": {
+		"prefix": "Touch",
+		"body": [
+			"Touch"
+		],
+		"description": "触屏交互管理类\n\n"
+	},
+	// Class Touch's Member Functions:
+	"DeltaPosition": {
+		"prefix": "DeltaPosition()",
+		"body": [
+			"DeltaPosition()"
+		],
+		"description": "Vector2 DeltaPosition()\n\n获得该Touch的当前帧位置与上一帧位置的差值\n返回:\n  当前帧位置与上一帧位置的差值，用二维向量Vector2表示\n"
+	},
+	"Phase": {
+		"prefix": "Phase()",
+		"body": [
+			"Phase()"
+		],
+		"description": "int Phase()\n\n获得该Touch的当前状态\n返回:\n  该Touch的当前状态，其索引编号与枚举类型TouchPhase.Phase相匹配\n"
+	},
+	"Position": {
+		"prefix": "Position()",
+		"body": [
+			"Position()"
+		],
+		"description": "Vector2 Position()\n\n获得该Touch的屏幕空间下的坐标位置\n返回:\n  屏幕空间下的坐标位置\n"
+	},
+	// Class Tracking
+	"Tracking": {
+		"prefix": "Tracking",
+		"body": [
+			"Tracking"
+		],
+		"description": "(AR独有)管理底层AR算法返回的跟踪属性\n\n"
+	},
+	// Class Tracking's Member Functions:
+	"EstimateIllumination": {
+		"prefix": "EstimateIllumination()",
+		"body": [
+			"EstimateIllumination( $1 )"
+		],
+		"description": "bool EstimateIllumination(int type)\n\n静态方法，获得真实相机（手机摄像头）中光照信息的估算值\n参数:\n  type: 算法类型，type=0表示在线光照恢复算法，type=1表示离线光照恢复算法\n返回:\n  算法是否成功的标识位\n警告:\n  目前版本只支持离线光照恢复算法，不支持在线光照恢复算法\n注解:\n  调用该方法后，场景中的主光源和主相机中的光照恢复信息会被更新，可以调用Camera::EstimationSphericalHarmonicIntensity()获得球谐光照强度的估算值，调用Light::EstimationColor()获得主光源颜色的估算值，调用Light::EstimationIntensity()获得主光源强度的估算值\n"
+	},
+	"GetReason": {
+		"prefix": "GetReason()",
+		"body": [
+			"GetReason()"
+		],
+		"description": "int GetReason()\n\n静态方法，获得AR跟踪失败时的错误信息编号\n返回:\n  错误信息编号\n注解:\n  错误信息编号约定为： \nInsightARInitFailReason_ReasonNone = 0 \nInsightARInitFailReason_ConfigFile_Not_Found = 1 \nInsightARInitFailReason_ConfigFile_Error = 2 \nInsightARInitFailReason_Camera_Error = 3 \nInsightARInitFailReason_IMU_Error = 4 \nInsightARInitFailReason_Device_Unsupported = 5 \nInsightARInitFailReason_AppKey_Secret_Error = 6 \nInsightARInitFailReason_AR_RUNGING = 7\n"
+	},
+	"GetStatus": {
+		"prefix": "GetStatus()",
+		"body": [
+			"GetStatus()"
+		],
+		"description": "int GetStatus()\n\n静态方法，获得当前AR跟踪状态\n返回:\n  跟踪状态\n注解:\n  跟踪状态约定为：\nInsightARState_Uninitialized = 0 \nInsightARState_Initing = 1 \nInsightARState_Init_OK = 2 \nInsightARState_Init_Fail = 3 \nInsightARState_Detecting = 4 \nInsightARState_Detect_OK = 5 \nInsightARState_Detect_Fail = 6 \nInsightARState_Tracking = 7 \nInsightARState_Track_Limited = 8 \nInsightARState_Track_Lost = 9 \nInsightARState_Track_Fail = 10 \nInsightARState_Track_Stop = 11"
+	},
+	"GetType": {
+		"prefix": "GetType()",
+		"body": [
+			"GetType()"
+		],
+		"description": "int GetType()\n\n静态方法，获得当前AR跟踪类型\n返回:\n  跟踪类型\n注解:\n  通常返回0\n"
+	},
+	"QuadCount": {
+		"prefix": "QuadCount()",
+		"body": [
+			"QuadCount()"
+		],
+		"description": "int QuadCount()\n\n静态方法，获得AR识别平面个数\n返回:\n  识别平面个数\n"
+	},
+	"QuadGetCenter": {
+		"prefix": "QuadGetCenter()",
+		"body": [
+			"QuadGetCenter( $1 )"
+		],
+		"description": "Vector3 QuadGetCenter(char name)\n\n静态方法，根据AR识别平面的名称获得平面中心点坐标\n参数:\n  name: 识别平面的名称\n返回:\n  识别平面中心点坐标\n"
+	},
+	"QuadGetName": {
+		"prefix": "QuadGetName()",
+		"body": [
+			"QuadGetName( $1 )"
+		],
+		"description": "char QuadGetName(int index)\n\n静态方法，根据AR识别平面的编号获得平面名称\n参数:\n  index: 识别平面的编号\n返回:\n  识别平面名称\n"
+	},
+	"QuadGetRotation": {
+		"prefix": "QuadGetRotation()",
+		"body": [
+			"QuadGetRotation( $1 )"
+		],
+		"description": "Quaternion QuadGetRotation(char name)\n\n静态方法，根据AR识别平面的名称获得平面旋转信息\n参数:\n  name: 识别平面的名称\n返回:\n  识别平面旋转信息\n"
+	},
+	"QuadGetScale": {
+		"prefix": "QuadGetScale()",
+		"body": [
+			"QuadGetScale( $1 )"
+		],
+		"description": "Vector3 QuadGetScale(char name)\n\n静态方法，根据AR识别平面的名称获得平面缩放信息\n参数:\n  name: 识别平面的名称\n返回:\n  识别平面缩放信息\n"
+	},
+	"QuadGetValid": {
+		"prefix": "QuadGetValid()",
+		"body": [
+			"QuadGetValid( $1 )"
+		],
+		"description": "bool QuadGetValid(char name)\n\n静态方法，根据AR识别平面的名称判断平面是否有效\n参数:\n  name: 识别平面的名称\n返回:\n  平面是否有效\n"
+	},
+	"Raycasting": {
+		"prefix": "Raycasting()",
+		"body": [
+			"Raycasting( $1 , $2 )"
+		],
+		"description": "TrackingResult Raycasting(int x, int y)\n\n静态方法，获得当前的跟踪信息\n参数:\n  x: 屏幕二维坐标点的x，以像素为单位。\n  y: 屏幕二维坐标点的y，以像素为单位。\n 返回:\n  TrackingResult 追踪结果\n"
+	},
+	// Struct TrackingResult
+	"TrackingResult": {
+		"prefix": "TrackingResult",
+		"body": [
+			"TrackingResult"
+		],
+		"description": "(AR独有)追踪结果结构体\n\n"
+	},
+	// Struct TrackingResult's Member Functions:
+	"Point": {
+		"prefix": "Point()",
+		"body": [
+			"Point()"
+		],
+		"description": "Vector3 Point()\n\n追踪点\n返回:\n  追踪点的三维坐标值\n"
+	},
+	"Tracked": {
+		"prefix": "Tracked()",
+		"body": [
+			"Tracked()"
+		],
+		"description": "bool Tracked()\n\n是否被追踪\n"
+	},
+	// Struct Transform
+	"Transform": {
+		"prefix": "Transform",
+		"body": [
+			"Transform"
+		],
+		"description": "Position, rotation and scale of an object.\n\n"
+	},
+	// Struct Transform's Member Functions:
+	"Forward": {
+		"prefix": "Forward()",
+		"body": [
+			"Forward()"
+		],
+		"description": "Vector3 Forward()\n\nGet a GameObject’s position vector on the Z axis of the transform relative to the parent. Unlike Vector3.forward, Transform.Forward() moves the GameObject while also considering its rotation.\n返回:\n  the forward vector\n"
+	},
+	"FromMatrix4x4": {
+		"prefix": "FromMatrix4x4()",
+		"body": [
+			"FromMatrix4x4( $1 )"
+		],
+		"description": "static Transform FromMatrix4x4(Matrix4x4 mat)\n\nGet the transform representation from a matrix.\n返回:\n  the local matrix\n"
+	},
+	"GetLocalRotation - Transform": {
+		"prefix": "GetLocalRotation()",
+		"body": [
+			"GetLocalRotation()"
+		],
+		"description": "Quaternion GetLocalRotation()\n\nGet the local rotation.\n返回:\n  the local rotation\n"
+	},
+	"GetLocalScale - Transform": {
+		"prefix": "GetLocalScale()",
+		"body": [
+			"GetLocalScale()"
+		],
+		"description": "Vector3 GetLocalScale()\n\nGet the local scale.\n返回:\n  the local scale\n"
+	},
+	"GetLocalTranslation - Transform": {
+		"prefix": "GetLocalTranslation()",
+		"body": [
+			"GetLocalTranslation()"
+		],
+		"description": "Vector3 GetLocalTranslation()\n\nGet the local position.\n返回:\n  the local position\n"
+	},
+	"Identity - Transform": {
+		"prefix": "Identity()",
+		"body": [
+			"Identity()"
+		],
+		"description": "static Transform Identity()\n\nA static identity transform (Read Only).\n返回:\n  the identity transform\n"
+	},
+	"Right": {
+		"prefix": "Right()",
+		"body": [
+			"Right()"
+		],
+		"description": "Vector3 Right()\n\nGet a GameObject’s position vector on the X axis of the transform relative to the parent. Unlike Vector3.right, Transform.right moves the GameObject while also considering its rotation.\n返回:\n  the right vector\n"
+	},
+	"SetLocalRotation - Transform": {
+		"prefix": "SetLocalRotation()",
+		"body": [
+			"SetLocalRotation( $1 )"
+		],
+		"description": "Transform SetLocalRotation(Quaternion b)\n\nSet the local rotation of the Transform.\n参数:\n  b : The local rotation of the Transform stored as a const Quaternion.\n"
+	},
+	"SetLocalScale - Transform": {
+		"prefix": "SetLocalScale()",
+		"body": [
+			"SetLocalScale( $1 )"
+		],
+		"description": "Transform SetLocalScale(Vector3 b)\n\nSet the local scale of the Transform.\n参数:\n  b : The local scale of the Transform stored as a const Vector3.\n"
+	},
+	"SetLocalTranslation - Transform": {
+		"prefix": "SetLocalTranslation()",
+		"body": [
+			"SetLocalTranslation( $1 )"
+		],
+		"description": "Transform SetLocalTranslation(Vector3 b)\n\nSet the local position of the Transform.\n参数:\n  b : The local position of the Transform stored as a const Vector3.\n"
+	},
+	"ToMatrix4x4": {
+		"prefix": "ToMatrix4x4()",
+		"body": [
+			"ToMatrix4x4()"
+		],
+		"description": "Matrix4x4 ToMatrix4x4()\n\nGet the matrix representation of a transform.\n返回:\n  b : The matrix\n"
+	},
+	"Up": {
+		"prefix": "Up()",
+		"body": [
+			"Up()"
+		],
+		"description": "Vector3 Up()\n\nGet a GameObject’s position vector on the Y axis of the transform relative to the parent. Unlike Vector3.up, Transform.up moves the GameObject while also considering its rotation.\n返回:\n  the up vector\n"
+	},
+
+
+
+
+
+
+	// Struct Vector2
+	"Vector2": {
+		"prefix": "Vector2",
+		"body": [
+			"Vector2"
+		],
+		"description": "Representation of 2D vectors and points.\n\n"
+	},
+	// Struct Vector2's Member Functions:
+	"Cross - Vector2": {
+		"prefix": "Cross()",
+		"body": [
+			"Cross( $1 )"
+		],
+		"description": "float Cross(Vector2 b)\n\nCross Product of two vectors.\n参数:\n  b : Another vector.\n返回:\n  the result of Cross Product of two vectors.\n"
+	},
+	"Dot - Vector2": {
+		"prefix": "Dot()",
+		"body": [
+			"Dot( $1 )"
+		],
+		"description": "float Dot(Vector2 b)\n\nDot Product of two vectors.\n参数:\n  b : Another vector.\n返回:\n  the result of Dot Product of two vectors.\n"
+	},
+
+
+
+
+
+
+
+	// Struct Vector3
+	"Vector3": {
+		"prefix": "Vector3",
+		"body": [
+			"Vector3"
+		],
+		"description": "Representation of 3D vectors and points.\n\n"
+	},
+	// Struct Vector3's Member Functions:
+
+
+
+
+
+
+	// Struct Vector4
+	"Vector4": {
+		"prefix": "Vector4",
+		"body": [
+			"Vector4"
+		],
+		"description": "Representation of four-dimensional vectors.\n\n"
+	},
+	// Struct Vector4's Member Functions:
+
+
+// AR Script API
+//-------------------------------------------------------------------
+
+//-------------------------------------------------------------------
+// AR Checking Status
+
+"Fw_ARState_Uninitialized": {
+        "prefix": "Fw_ARState_Uninitialized",
+        "body": [
+            "Fw_ARState_Uninitialized"
+        ],
+        "description": "AR Checking Status\n"
+    },
+"Fw_ARState_Initing": {
+        "prefix": "Fw_ARState_Initing",
+        "body": [
+            "Fw_ARState_Initing"
+        ],
+        "description": "AR Checking Status\n"
+    },
+"Fw_ARState_Init_OK": {
+        "prefix": "Fw_ARState_Init_OK",
+        "body": [
+            "Fw_ARState_Init_OK"
+        ],
+        "description": "AR Checking Status\n"
+    },
+"Fw_ARState_Init_Fail": {
+        "prefix": "Fw_ARState_Init_Fail",
+        "body": [
+            "Fw_ARState_Init_Fail"
+        ],
+        "description": "AR Checking Status\n"
+    },
+"Fw_ARState_Detecting": {
+        "prefix": "Fw_ARState_Detecting",
+        "body": [
+            "Fw_ARState_Detecting"
+        ],
+        "description": "AR Checking Status\n"
+    },
+"Fw_ARState_Detect_OK": {
+        "prefix": "Fw_ARState_Detect_OK",
+        "body": [
+            "Fw_ARState_Detect_OK"
+        ],
+        "description": "AR Checking Status\n"
+    },
+"Fw_ARState_Detect_Fail": {
+        "prefix": "Fw_ARState_Detect_Fail",
+        "body": [
+            "Fw_ARState_Detect_Fail"
+        ],
+        "description": "AR Checking Status\n"
+    },
+"Fw_ARState_Tracking": {
+        "prefix": "Fw_ARState_Tracking",
+        "body": [
+            "Fw_ARState_Tracking"
+        ],
+        "description": "AR Checking Status\n"
+    },
+"Fw_ARState_Track_Limited": {
+        "prefix": "Fw_ARState_Track_Limited",
+        "body": [
+            "Fw_ARState_Track_Limited"
+        ],
+        "description": "AR Checking Status\n"
+    },
+"Fw_ARState_Track_Lost": {
+        "prefix": "Fw_ARState_Track_Lost",
+        "body": [
+            "Fw_ARState_Track_Lost"
+        ],
+        "description": "AR Checking Status\n"
+    },
+"Fw_ARState_Track_Fail": {
+        "prefix": "Fw_ARState_Track_Fail",
+        "body": [
+            "Fw_ARState_Track_Fail"
+        ],
+        "description": "AR Checking Status\n"
+    },
+"Fw_ARState_Track_Stop": {
+        "prefix": "Fw_ARState_Track_Stop",
+        "body": [
+            "Fw_ARState_Track_Stop"
+        ],
+        "description": "AR Checking Status\n"
+    },
+
+
+// AR Checking Status
+//-------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------
+// -- AR Tracking Tpye 使用哪种算法在tracking
+
+"Fw_ARTrackingTpye_IMU": {
+	        "prefix": "Fw_ARTrackingTpye_IMU",
+	        "body": [
+	            "Fw_ARTrackingTpye_IMU"
+	        ],
+	        "description": "AR Tracking Tpye 使用哪种算法在tracking\n"
+	    },
+	"Fw_ARTrackingTpye_VO": {
+	        "prefix": "Fw_ARTrackingTpye_VO",
+	        "body": [
+	            "Fw_ARTrackingTpye_VO"
+	        ],
+	        "description": "AR Tracking Tpye 使用哪种算法在tracking\n"
+	    },
+	"Fw_ARTrackingTpye_VIO": {
+	        "prefix": "Fw_ARTrackingTpye_VIO",
+	        "body": [
+	            "Fw_ARTrackingTpye_VIO"
+	        ],
+	        "description": "AR Tracking Tpye 使用哪种算法在tracking\n"
+	    },
+
+// -- AR Tracking Tpye 使用哪种算法在tracking
+//-------------------------------------------------------------------
+
+//-------------------------------------------------------------------
+// -- Hint for Tracking Limited reason enum
+
+// Fw_TrackingLimitedReason_ReasonNone = 0.0;
+// Fw_TrackingLimitedReason_LowLight = 1.0;
+// Fw_TrackingLimitedReason_ExcessiveMotion = 2.0;
+// Fw_TrackingLimitedReason_InsufficientFeatures = 3.0;
+
+"Fw_TrackingLimitedReason_ReasonNone": {
+        "prefix": "Fw_TrackingLimitedReason_ReasonNone",
+        "body": [
+            "Fw_TrackingLimitedReason_ReasonNone"
+        ],
+        "description": "Hint for Tracking Limited reason enum\n"
+    },
+"Fw_TrackingLimitedReason_LowLight": {
+        "prefix": "Fw_TrackingLimitedReason_LowLight",
+        "body": [
+            "Fw_TrackingLimitedReason_LowLight"
+        ],
+        "description": "Hint for Tracking Limited reason enum\n"
+    },
+"Fw_TrackingLimitedReason_ExcessiveMotion": {
+        "prefix": "Fw_TrackingLimitedReason_ExcessiveMotion",
+        "body": [
+            "Fw_TrackingLimitedReason_ExcessiveMotion"
+        ],
+        "description": "Hint for Tracking Limited reason enum\n"
+    },
+"Fw_TrackingLimitedReason_InsufficientFeatures": {
+        "prefix": "Fw_TrackingLimitedReason_InsufficientFeatures",
+        "body": [
+            "Fw_TrackingLimitedReason_InsufficientFeatures"
+        ],
+        "description": "Hint for Tracking Limited reason enum\n"
+    },
+
+
+// -- Hint for Tracking Limited reason enum
+//-------------------------------------------------------------------
+
+//-------------------------------------------------------------------
+// -- Hint for Tracking Limited reason enum
+
+// -- Functions for Interact With APP
+// -- methodName : without ()
+// -- params : if no params, then set nil
+// -- result : 1 (Succeed) , 0 (Failed)
+// function Fw_Event_SendRunScriptCallback( methodName, params, result )
+
+"Fw_Event_SendRunScriptCallback": {
+        "prefix": "Fw_Event_SendRunScriptCallback()",
+        "body": [
+            "Fw_Event_SendRunScriptCallback( \" $1 \",   $2 ,   $3  )"
+        ],
+        "description": "Fw_Event_SendRunScriptCallback( methodName, params, result )\n\n Params:\n methodName : Script Name without the () \n params : if no params, then set nil \n result : 1 (Succeed) , 0 (Failed) \n 告知APP该 Lua Script 执行的结果\n"
+    },
+"Fw_Event_SendRunScript": {
+        "prefix": "Fw_Event_SendRunScript()",
+        "body": [
+            "Fw_Event_SendRunScript( \" $1 \" ,   $2  )"
+        ],
+        "description": "Fw_Event_SendRunScript( methodName, params )\n\n Params:\n methodName : Script Name without the () \n params : if no params, then set nil \n 发送申请执行 Lua Script 的消息\n"
+    },
+
+"Fw_Event_CloseARScene": {
+        "prefix": "Fw_Event_CloseARScene()",
+        "body": [
+            "Fw_Event_CloseARScene()"
+        ],
+        "description": "Fw_Event_CloseARScene()\n\n关闭AR场景"
+    },
+"Fw_Event_ReloadARProduct()": {
+        "prefix": "Fw_Event_ReloadARProduct()",
+        "body": [
+            "Fw_Event_ReloadARProduct()"
+        ],
+        "description": "Fw_Event_ReloadARProduct()\n\n重启AR场景，同时也会重启AR算法"
+    },
+"Fw_Event_Share(shareType, title, description, url, logoImagePath)": {
+        "prefix": "Fw_Event_Share(shareType, title, description, url, logoImagePath)",
+        "body": [
+            "Fw_Event_Share( $1 ,   $2 ,   $3 ,   $4 ,  $5 )"
+        ],
+        "description": "Fw_Event_Share(shareType, title, description, url, logoImagePath)\n\n Params:\n shareType: 1 text; 2 image; 3 music; 4 video; 5 url\n 如果某个参数不需要填内容，请在其位置上填写nil"
+    },
+
+//-------------------------------------------------------------------
+// -- Table operation
+
+"Fw_Table_GetLength(tb)": {
+        "prefix": "Fw_Table_GetLength( tb )",
+        "body": [
+            "Fw_Table_GetLength(  $1  )"
+        ],
+        "description": "Fw_Table_GetLength( tb )\n\n 返回Lua Table中的元素个数 "
+    },
+"Fw_Table_Clear(tb)": {
+        "prefix": "Fw_Table_Clear( tb )",
+        "body": [
+            "Fw_Table_Clear(  $1  )"
+        ],
+        "description": "Fw_Table_Clear( tb )\n\n 清除 Lua table 表中的条目 "
+    },
+
+"Fw_Table_ClearAndDestroyItem(tb)": {
+        "prefix": "Fw_Table_ClearAndDestroyItem( tb )",
+        "body": [
+            "Fw_Table_ClearAndDestroyItem(  $1  )"
+        ],
+        "description": "Fw_Table_ClearAndDestroyItem( tb )\n\n 清除 Lua table 表中的条目并销毁Entity "
+    },
+
+// -- Table operation
+//-------------------------------------------------------------------
+
+//-------------------------------------------------------------------
+// -- Math
+
+"Fw_Math_Point3To4(v)": {
+        "prefix": "Fw_Math_Point3To4( v )",
+        "body": [
+            "Fw_Math_Point3To4(  $1  )"
+        ],
+        "description": "Fw_Math_Point3To4( v )\n\n return: World.Vector4\n 将三维点增加w分量变成齐次坐标 "
+    },
+"Fw_Math_Point4To3(v)": {
+        "prefix": "Fw_Math_Point4To3( v )",
+        "body": [
+            "Fw_Math_Point4To3(  $1  )"
+        ],
+        "description": "Fw_Math_Point4To3( v )\n\n return: World.Vector3\n 将齐次坐标降维成三维坐标 "
+    },
+"Fw_Math_Vector3To4(v)": {
+        "prefix": "Fw_Math_Vector3To4( v )",
+        "body": [
+            "Fw_Math_Vector3To4(  $1  )"
+        ],
+        "description": "Fw_Math_Vector3To4( v )\n\n return: World.Vector4\n 将三维向量增加w分量变成齐次坐标 "
+    },
+"Fw_Math_Vector4To3(v)": {
+        "prefix": "Fw_Math_Vector4To3( v )",
+        "body": [
+            "Fw_Math_Vector4To3(  $1  )"
+        ],
+        "description": "Fw_Math_Vector4To3( v )\n\n return: World.Vector3\n 将齐次坐标降维成三维坐标 "
+    },
+"Fw_Math_TransPoint(m,v)": {
+        "prefix": "Fw_Math_TransPoint(m,v)",
+        "body": [
+            "Fw_Math_TransPoint( $1 , $2 )"
+        ],
+        "description": "Fw_Math_TransPoint(m,v)\n\n Params:\n m:World.Matrix4x4 \n v: World.Vector3\n return: World.Vector3\n   使用4x4矩阵对三维点进行坐标变换"
+ },
+"Fw_Math_TransVector(m,v)": {
+        "prefix": "Fw_Math_TransVector(m,v)",
+        "body": [
+            "Fw_Math_TransVector( $1 , $2 )"
+        ],
+        "description": "Fw_Math_TransVector(m,v)\n\n Params:\n m:World.Matrix4x4 \n v: World.Vector3\n return: World.Vector3\n   使用4x4矩阵对三维向量进行坐标变换"
+ },
+
+"Fw_Math_GetWorldTranslation(entity)": {
+        "prefix": "Fw_Math_GetWorldTranslation(entity)",
+        "body": [
+            "Fw_Math_GetWorldTranslation( $1 )"
+        ],
+        "description": "Fw_Math_GetWorldTranslation(entity)\n\n Params:World.Entity\n return: World.Vector3\n   获取entity的世界坐标"
+ },
+
+
+"Fw_Math_CorssVec3( v1, v2 )": {
+        "prefix": "Fw_Math_CorssVec3( v1, v2 )",
+        "body": [
+            "Fw_Math_CorssVec3( $1 , $2 )"
+        ],
+        "description": "Fw_Math_CorssVec3( v1, v2 )\n\n Params:\n v1: World.Vector3 \n v2: World.Vector3\n return: World.Vector3\n   两个三维向量求叉积"
+ },
+
+// -- 计算一个二维点是否在一个矩形内部
+// -- args: Vector2:point, Vector2:rectCenter, Vector2:rectScaleXY
+// function  Fw_Math_IsPointInRect( point , rectCenter, rectScaleXY  )
+"Fw_Math_IsPointInRect( point , rectCenter, rectScaleXY  )": {
+        "prefix": "Fw_Math_IsPointInRect( point , rectCenter, rectScaleXY  )",
+        "body": [
+            "Fw_Math_IsPointInRect( $1 , $2 , $3  )"
+        ],
+        "description": "Fw_Math_IsPointInRect( point , rectCenter, rectScaleXY  )\n\n Params:\n point:World.Vector2,\n rectCenter:World.Vector2,\n rectScaleXY:World.Vector2\n return: boolean\n   计算一个二维点是否在一个矩形内部"
+ },
+
+
+	// Fw_Math_Lerp(a, b, t)
+"Fw_Math_Lerp(a, b, t)": {
+        "prefix": "Fw_Math_Lerp(a, b, t)",
+        "body": [
+            "Fw_Math_Lerp( $1 , $2 , $3  )"
+        ],
+        "description": "Fw_Math_Lerp(a, b, t)\n\n Params:\n a,b,t: number  return: number\n  lerp from a to b by t "
+ },
+
+"Fw_Math_LerpVector3(a, b, t)": {
+        "prefix": "Fw_Math_LerpVector3(a, b, t)",
+        "body": [
+            "Fw_Math_LerpVector3( $1 , $2 , $3  )"
+        ],
+        "description": "Fw_Math_LerpVector3(a, b, t)\n\n Params:\n a,b: World.Vector3\n t:number  return: World.Vector3\n  lerp from vector3 a to b by t "
+ },
+
+// -- Math
+//-------------------------------------------------------------------
+
+//-------------------------------------------------------------------
+// -- 计量相关
+
+
+// -- 根据一个带单位的字符串，返回相应数值（以米为单位）
+// -- 如果字符串不带单位，则将该字符串作为数值返回
+// -- 若字符串中数字部分夹杂其他字符，则返回0
+// -- 支持单位: nm, um, mm, cm, m, km
+// -- Params: string
+// -- Return: number
+// function Fw_Math_HowManyMetersFromString(s)
+"Fw_Math_HowManyMetersFromString(s)": {
+        "prefix": "Fw_Math_HowManyMetersFromString(s)",
+        "body": [
+            "Fw_Math_HowManyMetersFromString( $1 )"
+        ],
+        "description": "Fw_Math_HowManyMetersFromString(s)\n\n Params: string \n return: number \n  根据一个带单位的字符串，返回相应数值（以米为单位）。\n 如果字符串不带单位，则将该字符串作为数值返回\n 若字符串中数字部分夹杂其他字符，则返回0\n 支持单位: nm, um, mm, cm, m, km"
+ },
+
+// -- 根据一个带单位的字符串，返回相应的数值
+// -- 如果数字中夹杂其他字符（除.之外），将返回0
+// -- Params: s string, u string( the unit of measurement)
+// -- Return: number
+// function Fw_Math_ToNumberFromStringWithUnit( s, u )
+
+"Fw_Math_ToNumberFromStringWithUnit( s, u )": {
+        "prefix": "Fw_Math_ToNumberFromStringWithUnit(  s, u  )",
+        "body": [
+            "Fw_Math_ToNumberFromStringWithUnit( $1 , $2 )"
+        ],
+        "description": "Fw_Math_ToNumberFromStringWithUnit(  s, u  )\n\n Params:\n s: string \n u string( the unit of measurement)\n return: number\n  根据一个带单位的字符串，返回相应的数值\n如果数字中夹杂其他字符（除.之外），将返回0"
+ }
+
+// -- 计量相关
+//-----------------------------------------------------------------
+
+
+
+}
