@@ -8,7 +8,7 @@ Insight AR Script Coding Intellisense
 
 For Example:
 
-![alt text](ar-script/images/example_intellisense_01.jpg)
+![alt text](https://github.com/tangwilliam/ARScriptExtensionForVSCode/blob/master/ar-script/images/example_intellisense_01.jpg)
 
 
 ## Release Notes
