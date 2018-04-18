@@ -6,6 +6,9 @@ Published by Netease Insight ( 网易洞见 )
 
 Insight AR Script Coding Intellisense
 
+For Example:
+
+-----![alt text](ARScriptExtensionForVSCode/ar-script/images/example_intellisense_01.jpg)
 
 
 ## Release Notes
