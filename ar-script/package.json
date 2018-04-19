@@ -1,12 +1,12 @@
 {
     "name": "ar-script",
     "displayName": "AR Script",
-    "description": "AR Script Coding for VSCode",
-    "version": "0.0.3",
+    "description": "AR Script Coding intellisense for VSCode",
+    "version": "0.0.6",
     "publisher": "Netease",
     "icon": "images/Insight_Logo.png",
     "engines": {
-        "vscode": "^1.22.0"
+        "vscode": "^1.10.0"
     },
     "categories": [
         "Other"

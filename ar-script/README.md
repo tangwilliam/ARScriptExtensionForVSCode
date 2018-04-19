@@ -6,16 +6,14 @@ Published by Netease Insight ( 网易洞见 )
 
 Insight AR Script Coding Intellisense
 
-For Example:
 
-![alt text](https://github.com/tangwilliam/ARScriptExtensionForVSCode/blob/master/ar-script/images/example_intellisense_01.jpg)
 
 
 ## Release Notes
 
 ### 0.0.2
 
-Insight AR Script Coding Intellisense
+Include Insight AR Script Coding Intellisense
 
 ### 0.0.1
 
